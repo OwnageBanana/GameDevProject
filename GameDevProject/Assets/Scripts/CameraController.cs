@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour {
     public float scrollSpeed = 20f;
     public float minY=20f;
     public float maxY=600f;
+
 	// Update is called once per frame
 	void Update () {
         Vector3 pos = transform.position;

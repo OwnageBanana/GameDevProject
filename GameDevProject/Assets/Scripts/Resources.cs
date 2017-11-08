@@ -7,7 +7,7 @@ public class Resources {
         Food = 10;
         Happiness = 100;
         Energy = 100;
-        ShipIntegrety = 100;
+        ShipHp = 100;
         Garbage = 0;
     }
 
@@ -16,7 +16,7 @@ public class Resources {
     public int Food { get; set; } // 0 to cap
     public int Happiness { get; set; } // 0 to 100
     public int Energy { get; set; } //0 to cap
-    public int ShipIntegrety { get; set; }// cap to 0
+    public int ShipHp { get; set; }// cap to 0
     public int Garbage { get; set; } // 0 to cap
 
 }
