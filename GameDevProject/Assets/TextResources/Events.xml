@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!--
+Author: Adam Mills
+list of all events that are in the game.
+Formatting:
+events consist of the same parameters as in the object type Event  (Assets/Scripts/Event.cs)
+-Description  : string
+-Reward       : Resources
+-Cost         : Resources
+-EventType    : EventType
+-EventId      : int
+
+Resources consist of hte same parameters as in the object type Resources (Assets/Scripts/Resources.cs)
+Food      : int
+Energy    : int
+Happiness : int
+ShipHp    : int
+Garbage   : int
+Karma     : int
+
+EventType is of Type enum, thus will be parsed from a string to the parameter in EventType
+This means for event type fields, you have to put in the string value instead of the integer value (Good, Bad, Neutral,..)
+
+ADHEAR TO THE SAME DATA TYPE AS SPECIFIED, DO NOT LEAVE NULL FIELDS, LEAVE EMPTY IF ABSOLUTLY NESSESARY
+
+-->
+<ArrayOfEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Event>
+    <Description>abc</Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>2</Happiness>
+      <Energy>1</Energy>
+      <ShipHp>3</ShipHp>
+      <Garbage>4</Garbage>
+      <Karma>0</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>2</Happiness>
+      <Energy>1</Energy>
+      <ShipHp>3</ShipHp>
+      <Garbage>4</Garbage>
+      <Karma>0</Karma>
+    </Cost>
+    <EventId>1</EventId>
+    <EventType>Good</EventType>
+  </Event>
+  <Event>
+    <Description>def</Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>2</Happiness>
+      <Energy>1</Energy>
+      <ShipHp>3</ShipHp>
+      <Garbage>4</Garbage>
+      <Karma>0</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>2</Happiness>
+      <Energy>1</Energy>
+      <ShipHp>3</ShipHp>
+      <Garbage>4</Garbage>
+      <Karma>0</Karma>
+    </Cost>
+    <EventId>2</EventId>
+    <EventType>Good</EventType>
+  </Event>
+  <Event>
+    <Description>ghi</Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>2</Happiness>
+      <Energy>1</Energy>
+      <ShipHp>3</ShipHp>
+      <Garbage>4</Garbage>
+      <Karma>0</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>2</Happiness>
+      <Energy>1</Energy>
+      <ShipHp>3</ShipHp>
+      <Garbage>4</Garbage>
+      <Karma>0</Karma>
+    </Cost>
+    <EventId>3</EventId>
+    <EventType>Good</EventType>
+  </Event>
+</ArrayOfEvent>
+
+
+<!--
+  <Event>
+    <Description></Description>
+    <Reward>
+      <Food></Food>
+      <Happiness></Happiness>
+      <Energy></Energy>
+      <ShipHp></ShipHp>
+      <Garbage></Garbage>
+      <Karma></Karma>
+    </Reward>
+    <Cost>
+      <Food></Food>
+      <Happiness></Happiness>
+      <Energy></Energy>
+      <ShipHp></ShipHp>
+      <Garbage></Garbage>
+      <Karma></Karma>
+    </Cost>
+    <EventId></EventId>
+    <EventType></EventType>
+  </Event>
+
+      -->

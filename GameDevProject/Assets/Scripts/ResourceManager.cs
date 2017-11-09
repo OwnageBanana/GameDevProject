@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//Author: Adam Mills
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +16,7 @@ public class ResourceManager : MonoBehaviour
     public int EnergyCap = 100;
     public int ShipHpCap = 100;
     public int GarbageCap = 100;
+    public int KarmaCap = 100;
 
 
     // Use this for initialization
@@ -25,8 +29,17 @@ public class ResourceManager : MonoBehaviour
         else
             Destroy(gameObject);
 
+        //baseline food level?
+        resources.Food = 10;
+        resources.Happiness = 100;
+        resources.Energy = 100;
+        resources.ShipHp = 100;
+        resources.Garbage = 0;
+        resources.Karma = 0;
+
     }
 
+    /*Getters and setter of the resource values*/
 
     //removing food. doesnt allow values below zero
     public void removeFood(int amm)
@@ -97,6 +110,26 @@ public class ResourceManager : MonoBehaviour
     {
         if (amm + resources.ShipHp > ShipHpCap)
             resources.ShipHp = ShipHpCap;
+        else
+            resources.ShipHp += amm;
+
+    }
+
+
+    //removes karma. Doesnt allow values below - karma cap
+    public void removeKarma(int amm)
+    {
+        if (resources.Karma - amm <= (KarmaCap * -1))
+            resources.Karma = (KarmaCap * -1);
+        else
+            resources.Karma -= amm;
+    }
+
+    //adds Ship Hp. Doesnt allow values above karma cap
+    public void addKarma(int amm)
+    {
+        if (amm + resources.Karma > KarmaCap)
+            resources.Karma = KarmaCap;
         else
             resources.ShipHp += amm;
 
