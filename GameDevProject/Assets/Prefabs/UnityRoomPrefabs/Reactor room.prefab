@@ -632,6 +632,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a1ffcb50c85f14daf6f15bb93093f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wokerCost: 2
-  ironCost: 100
-  copperCost: 100
+  gain:
+    Food: 0
+    Happiness: 0
+    Karma: 0
+    Energy: 0
+    ShipHp: 0
+    Garbage: 0
+  cost:
+    Food: 0
+    Happiness: 0
+    Karma: 0
+    Energy: 0
+    ShipHp: 0
+    Garbage: 0

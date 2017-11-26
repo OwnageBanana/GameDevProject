@@ -1,5 +1,4 @@
-﻿//Author: Adam Mills
-
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,29 +8,14 @@ using System;
 using System.Xml.Serialization;
 using System.Xml.Linq;
 
-public class EventHandler : MonoBehaviour
-{
+public class EventManager : MonoBehaviour {
 
     List<Event> Events = new List<Event>();
-    public static EventHandler instance;
-
-    //called when game object is created, before awake, this is pretty important.
-    private void Awake()
-    {
-
-        if (instance == null)
-            instance = this;
-        else
-        {
-            DestroyObject(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
-
-    }
 
     // Use this for initialization, called on script enabling
     void Start()
     {
+
         try
         {
             //initialize serializer to use List<Event>
@@ -56,6 +40,9 @@ public class EventHandler : MonoBehaviour
         {
             Debug.Log(ex);
         }
+
+
+
     }
 
     public Event PickEvent(Resources resources)
