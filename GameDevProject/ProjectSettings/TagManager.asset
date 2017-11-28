@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PilotBay
+  - Kitchen
+  - Gym
+  - Engine
+  - AICore
+  - Reactor
+  - Cafeteria
   layers:
   - Default
   - TransparentFX
@@ -13,8 +20,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Sprites
+  - Ship
   - 
   - 
   - 

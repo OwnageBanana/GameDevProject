@@ -39,6 +39,32 @@ public class ResourceManager : MonoBehaviour
 
     }
 
+
+    public Resources RemoveResources(Resources toRemove)
+    {
+        removeFood(toRemove.Food);
+        removeHappiness(toRemove.Happiness);
+        removeEnergy(toRemove.Energy);
+        removeShipHP(toRemove.ShipHp);
+        removeKarma(toRemove.Karma);
+
+        return resources;
+    }
+
+
+
+    public Resources AddResources(Resources toAdd)
+    {
+        addFood(toAdd.Food);
+        addHappiness(toAdd.Happiness);
+        addEnergy(toAdd.Energy);
+        addShipHP(toAdd.ShipHp);
+        addKarma(toAdd.Karma);
+
+        return resources;
+    }
+
+
     /*Getters and setter of the resource values*/
 
     //removing food. doesnt allow values below zero

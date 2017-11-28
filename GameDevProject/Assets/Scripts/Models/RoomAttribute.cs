@@ -6,7 +6,8 @@ public class RoomAttribute : MonoBehaviour {
 
     public Resources gain;
     public Resources cost;
-
+    public float x;
+    public float y;
     // Use this for initialization
     void Start()
     {

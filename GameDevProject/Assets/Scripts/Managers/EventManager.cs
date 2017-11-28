@@ -81,7 +81,9 @@ public class EventManager : MonoBehaviour {
 
 
 
-
+    /// <summary>
+    /// This can be used to generate events based on the events added to the list, maybe easier than writing out the XML Yourself?
+    /// </summary>
     private void serializeList()
     {
         XmlSerializer ser = new XmlSerializer(typeof(List<Event>));
