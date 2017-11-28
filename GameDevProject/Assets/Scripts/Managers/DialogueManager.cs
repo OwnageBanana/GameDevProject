@@ -6,15 +6,19 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
 
-
     private Queue<string> sentences;
 
-
     public Text DialogueText;
+    public Text DialogueTitle;
+
     public Text MessageText;
+    public Text MessageTitle;
 
     public Animator Dialogue;
     public Animator Message;
+
+    private Coroutine currentDialogue;
+
     // Use this for initialization
     void Start()
     {
@@ -43,6 +47,7 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
+        DialogueTitle.text = dialogue.Name;
         DisplayNextSentence();
 
 
@@ -62,7 +67,10 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         string sentence = sentences.Dequeue();
-        StartCoroutine(TypeSentence(sentence));
+        //stops the previous coroutine that is typing
+        if (currentDialogue != null)
+        StopCoroutine(currentDialogue);
+        currentDialogue = StartCoroutine(TypeSentence(sentence));
     }
 
     IEnumerator TypeMessageText(string Text)
@@ -75,22 +83,15 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartEvent(Dialogue dialogue)
+    public void StartEvent(Event ev)
     {
-        sentences.Clear();
         Message.SetBool("IsOpen", true);
 
-        foreach (string sentence in dialogue.Sentences)
-        {
-            sentences.Enqueue(sentence);
-        }
-
-        string text = sentences.Dequeue();
-        TypeMessageText(text);
-
+        TypeMessageText(ev.Description);
     }
 
-    public void EndMessage()
+
+    public void EndEvent()
     {
         Message.SetBool("IsOpen", false);
     }
