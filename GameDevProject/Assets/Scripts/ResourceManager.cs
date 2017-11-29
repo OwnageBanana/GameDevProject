@@ -9,6 +9,7 @@ public class ResourceManager : MonoBehaviour
 {
     //static resource object, has resource values
     public static Resources resources;
+    public HUDController HUD;
 
     //resource caps. may change thrroughout the game
     //note, no happiness cap. not likely needed to change throughout the game
@@ -18,6 +19,15 @@ public class ResourceManager : MonoBehaviour
     public int GarbageCap = 100;
     public int KarmaCap = 100;
 
+    //Added by Brandon for HUD controller functionality
+    public Resources GetResources()
+    {
+        if (resources == null)
+        {
+            resources = new Resources();
+        }
+        return resources;
+    }
 
     // Use this for initialization
     void Start()
@@ -48,6 +58,7 @@ public class ResourceManager : MonoBehaviour
             resources.Food = 0;
         else
             resources.Food -= amm;
+        HUD.RefreshHUD();
     }
 
     //Adding food. . doesnt allow values above cap
@@ -57,6 +68,7 @@ public class ResourceManager : MonoBehaviour
             resources.Food = FoodCap;
         else
             resources.Food += amm;
+        HUD.RefreshHUD();
     }
 
     //removes happiness. doesnt allow values below zero
@@ -66,6 +78,7 @@ public class ResourceManager : MonoBehaviour
             resources.Happiness = 0;
         else
             resources.Happiness -= amm;
+        HUD.RefreshHUD();
     }
 
     //adds happiness. doesnt allow values above 100
@@ -75,6 +88,7 @@ public class ResourceManager : MonoBehaviour
             resources.Happiness = 100;
         else
             resources.Happiness += amm;
+        HUD.RefreshHUD();
     }
 
     //removes energy. Doesnt allow values below zero
@@ -84,6 +98,7 @@ public class ResourceManager : MonoBehaviour
             resources.Energy = 0;
         else
             resources.Energy -= amm;
+        HUD.RefreshHUD();
     }
 
     //adds energy. doesnt allow values above cap (default 100)
@@ -93,7 +108,7 @@ public class ResourceManager : MonoBehaviour
             resources.Happiness = EnergyCap;
         else
             resources.Happiness += amm;
-
+        HUD.RefreshHUD();
     }
 
     //removes Ship Hp. Doesnt allow values below zero
@@ -103,6 +118,7 @@ public class ResourceManager : MonoBehaviour
             resources.ShipHp = 0;
         else
             resources.ShipHp -= amm;
+        HUD.RefreshHUD();
     }
 
     //adds Ship Hp. Doesnt allow values above Hp cap
@@ -112,7 +128,7 @@ public class ResourceManager : MonoBehaviour
             resources.ShipHp = ShipHpCap;
         else
             resources.ShipHp += amm;
-
+        HUD.RefreshHUD();
     }
 
 
@@ -123,6 +139,7 @@ public class ResourceManager : MonoBehaviour
             resources.Karma = (KarmaCap * -1);
         else
             resources.Karma -= amm;
+        HUD.RefreshHUD();
     }
 
     //adds Ship Hp. Doesnt allow values above karma cap
@@ -132,7 +149,7 @@ public class ResourceManager : MonoBehaviour
             resources.Karma = KarmaCap;
         else
             resources.ShipHp += amm;
-
+        HUD.RefreshHUD();
     }
 
 
