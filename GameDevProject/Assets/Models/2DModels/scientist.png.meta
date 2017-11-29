@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 67182f45f2bfaba4ebd66e1638a34baa
-timeCreated: 1511725420
+guid: 66df97dfb3d84354e8a95566de0fe49f
+timeCreated: 1511918047
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Image2_0
-    21300002: Image2_1
-    21300004: Image2_2
+    21300000: scientist_0
+    21300002: scientist_1
+    21300004: scientist_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -59,17 +59,17 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 256
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 256
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -78,10 +78,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Image2_0
+      name: scientist_0
       rect:
         serializedVersion: 2
-        x: 120
+        x: 0
         y: 0
         width: 60
         height: 80
@@ -92,7 +92,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Image2_1
+      name: scientist_1
       rect:
         serializedVersion: 2
         x: 60
@@ -106,10 +106,10 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Image2_2
+      name: scientist_2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 120
         y: 0
         width: 60
         height: 80
@@ -119,11 +119,7 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
-    outline:
-    - - {x: -90, y: 40}
-      - {x: -90, y: -40}
-      - {x: 90, y: -40}
-      - {x: 90, y: 40}
+    outline: []
     physicsShape: []
   spritePackingTag: 
   userData: 
