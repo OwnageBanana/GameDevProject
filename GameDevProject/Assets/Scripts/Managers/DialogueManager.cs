@@ -87,7 +87,7 @@ public class DialogueManager : MonoBehaviour
     {
         Message.SetBool("IsOpen", true);
 
-        TypeMessageText(ev.Description);
+        StartCoroutine(TypeMessageText(ev.Description));
     }
 
 

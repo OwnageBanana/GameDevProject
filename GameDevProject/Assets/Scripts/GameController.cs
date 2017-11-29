@@ -67,14 +67,10 @@ public class GameController : MonoBehaviour
     }
 
 
-
-
     private void checkSentMessage()
     {
-
         if (!messageSent)
         {
-
             messageSent = true;
             dialogueManager.StartDailogue(startDialogue);
             Event e = new Event { Description = "This is a test to see how events work" };
