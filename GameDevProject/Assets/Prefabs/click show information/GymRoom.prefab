@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 23881604500402018}
   - component: {fileID: 114030846923817990}
   m_Layer: 9
-  m_Name: GymRoom (1) 1
+  m_Name: GymRoom
   m_TagString: Gym
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

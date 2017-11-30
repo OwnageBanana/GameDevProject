@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 23321303663970714}
   - component: {fileID: 114042456680704554}
   m_Layer: 9
-  m_Name: EngineRoom (1) 1
+  m_Name: EngineRoom
   m_TagString: Engine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

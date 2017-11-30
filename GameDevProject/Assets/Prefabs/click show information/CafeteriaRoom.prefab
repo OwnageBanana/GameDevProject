@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 65405971447865566}
   - component: {fileID: 114061168220250556}
   m_Layer: 9
-  m_Name: CafeteriaRoom (1) 1
+  m_Name: CafeteriaRoom
   m_TagString: Cafeteria
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

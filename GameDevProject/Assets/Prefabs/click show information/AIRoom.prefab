@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 23732594396125720}
   - component: {fileID: 114868315412375566}
   m_Layer: 9
-  m_Name: AIRoom (1)
+  m_Name: AIRoom
   m_TagString: AICore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
