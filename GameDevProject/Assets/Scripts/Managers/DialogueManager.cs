@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
@@ -10,12 +11,15 @@ public class DialogueManager : MonoBehaviour
 
     public Text DialogueText;
     public Text DialogueTitle;
+    public Animation Avatar;
 
     public Text MessageText;
     public Text MessageTitle;
 
     public Animator Dialogue;
     public Animator Message;
+
+
 
     private Coroutine currentDialogue;
 
@@ -46,7 +50,7 @@ public class DialogueManager : MonoBehaviour
         {
             sentences.Enqueue(sentence);
         }
-
+        Avatar.Play("spriteAnimation");
         DialogueTitle.text = dialogue.Name;
         DisplayNextSentence();
 
@@ -55,6 +59,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        Avatar.Stop();
         Dialogue.SetBool("IsOpen", false);
     }
 

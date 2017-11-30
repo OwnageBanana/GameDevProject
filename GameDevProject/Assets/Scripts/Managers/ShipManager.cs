@@ -47,4 +47,15 @@ public class ShipManager : MonoBehaviour {
         rooms[center - 1, center - 1] = Instantiate(roomTypesDict["Cafeteria"], new Vector3(-roomSize, 0, -roomSize), new Quaternion(0, 0, 0, 0));
         rooms[center - 1, center - 2] = Instantiate(roomTypesDict["Kitchen"], new Vector3(-roomSize, 0, -roomSize * 2), new Quaternion(0, 0, 0, 0));
     }
+
+
+    public RoomAttribute AddRoom()
+    {
+
+        RoomAttribute t = new RoomAttribute();
+
+
+        return t;
+
+    }
 }

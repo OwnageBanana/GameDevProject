@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class RoomAttribute : MonoBehaviour {
 
+    public GameObject Room;
     public Resources gain;
     public Resources cost;
     public float x;
-    public float y;
+    public float z;
     // Use this for initialization
     void Start()
     {
-        gain = new Resources { Energy = 2 };
-        cost = new Resources { Garbage = 1 };
     }
 
 }
