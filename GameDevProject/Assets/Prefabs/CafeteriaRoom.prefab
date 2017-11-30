@@ -166,6 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4363971277518786}
   - component: {fileID: 114435327944144704}
+  - component: {fileID: 65668002704899096}
   m_Layer: 9
   m_Name: CafeteriaRoom
   m_TagString: Cafeteria
@@ -1443,6 +1444,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1771479587478704}
   m_Mesh: {fileID: 4300004, guid: 63ba9d043be4eec4d8cb83991b2cf127, type: 3}
+--- !u!65 &65668002704899096
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368576100863774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.92, y: 0.5, z: 3.92}
+  m_Center: {x: -2.15, y: 0.3, z: -2.15}
 --- !u!108 &108464076787548024
 Light:
   m_ObjectHideFlags: 1

@@ -677,7 +677,7 @@ Transform:
   m_Children:
   - {fileID: 309553961}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &596088410
 GameObject:
@@ -1766,6 +1766,10 @@ MonoBehaviour:
   eventManager: {fileID: 176143209}
   resourceManager: {fileID: 889922426}
   shipManager: {fileID: 926005000}
+  MainCamera: {fileID: 898678667}
+  clickablesLayer:
+    serializedVersion: 2
+    m_Bits: 512
   startDialogue:
     Name: Dr.Orzeo
     Sentences:
@@ -3276,7 +3280,7 @@ RectTransform:
   - {fileID: 1362019955}
   - {fileID: 1475682822}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3473,12 +3477,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueText: {fileID: 1095757587}
   DialogueTitle: {fileID: 1965814821}
-  Sprites:
-  - {fileID: 21300000, guid: 66df97dfb3d84354e8a95566de0fe49f, type: 3}
-  - {fileID: 21300002, guid: 66df97dfb3d84354e8a95566de0fe49f, type: 3}
-  - {fileID: 21300004, guid: 66df97dfb3d84354e8a95566de0fe49f, type: 3}
-  AnimationSpeed: 0.5
-  Avatar: {fileID: 1302482110}
   MessageText: {fileID: 662701503}
   MessageTitle: {fileID: 1093925048}
   Dialogue: {fileID: 1362019958}

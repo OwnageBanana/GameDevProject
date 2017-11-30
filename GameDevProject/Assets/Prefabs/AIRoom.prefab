@@ -35,6 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4734420217847340}
   - component: {fileID: 114602606682228168}
+  - component: {fileID: 65089673684330482}
   m_Layer: 9
   m_Name: AIRoom
   m_TagString: AICore
@@ -207,6 +208,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1962916445614780}
   m_Mesh: {fileID: 4300000, guid: 5ef2176dfc486f7419052684eee63ad0, type: 3}
+--- !u!65 &65089673684330482
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413371237337970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.92, y: 0.5, z: 3.92}
+  m_Center: {x: -2.15, y: 0.3, z: -2.15}
 --- !u!108 &108546182445356624
 Light:
   m_ObjectHideFlags: 1

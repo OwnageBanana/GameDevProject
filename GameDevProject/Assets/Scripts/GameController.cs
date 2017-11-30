@@ -12,6 +12,9 @@ public class GameController : MonoBehaviour
     public ShipManager shipManager;
     //public AudioManager audioManager;
 
+    public Camera MainCamera;
+    public LayerMask clickablesLayer;
+
     public static GameController instance;
 
     public Dialogue startDialogue;
@@ -48,6 +51,24 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Raycast on click");
+            Debug.Log(clickablesLayer.value);
+            Debug.Log(clickablesLayer);
+            RaycastHit rayHit;
+            bool hit = Physics.Raycast(MainCamera.ScreenPointToRay(Input.mousePosition), out rayHit, clickablesLayer);
+            if (hit)
+            {
+                //ClickOn clickOnScript = rayHit.collider.GetComponent<ClickOn>();
+                RoomAttribute room = rayHit.collider.GetComponent<RoomAttribute>();
+                //clickOnScript.currentlySelected = !clickOnScript.currentlySelected;
+                //clickOnScript.ClickMe();
+                Debug.Log(room.z + " " +  room.x);
+
+            }
+        }
         checkSentMessage();
 
     }

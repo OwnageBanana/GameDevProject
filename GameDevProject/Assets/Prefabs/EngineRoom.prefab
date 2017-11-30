@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4412515705372268}
   - component: {fileID: 114406110399452010}
+  - component: {fileID: 65904446260362974}
   m_Layer: 9
   m_Name: EngineRoom
   m_TagString: Engine
@@ -204,6 +205,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1088677333244432}
   m_Mesh: {fileID: 4300000, guid: 23085a4c5ad932e48ab8cfdbbb944f67, type: 3}
+--- !u!65 &65904446260362974
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151045203327704}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.92, y: 0.5, z: 3.92}
+  m_Center: {x: -2.15, y: 0.3, z: -2.15}
 --- !u!108 &108886791496809246
 Light:
   m_ObjectHideFlags: 1
