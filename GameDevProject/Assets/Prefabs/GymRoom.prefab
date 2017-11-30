@@ -842,6 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0bddaee6fc3a8d42b2287ee51793484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Room: {fileID: 1233297247386860}
   gain:
     Food: 0
     Happiness: 1
@@ -857,4 +858,4 @@ MonoBehaviour:
     ShipHp: 0
     Garbage: 0
   x: 0
-  y: 0
+  z: 0

@@ -58,7 +58,9 @@ public class ResourceManager : MonoBehaviour
         removeShipHP(toRemove.ShipHp);
         removeKarma(toRemove.Karma);
 
+        HUD.RefreshHUD();
         return resources;
+
     }
 
 
@@ -71,7 +73,9 @@ public class ResourceManager : MonoBehaviour
         addShipHP(toAdd.ShipHp);
         addKarma(toAdd.Karma);
 
+        HUD.RefreshHUD();
         return resources;
+
     }
 
 
