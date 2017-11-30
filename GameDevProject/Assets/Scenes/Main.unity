@@ -1268,6 +1268,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1002077733}
+  - component: {fileID: 1002077734}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -1293,6 +1294,48 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1002077734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1002077732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605ef5556f24f694ea0cd25fbc0c09b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: bgSound1
+    clip: {fileID: 8300000, guid: f9c4efd335c7cad48bfabe42dfcff826, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: bgSound3
+    clip: {fileID: 8300000, guid: 4b1d09237cef8214b9aabd1d5b597429, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: bgSound4
+    clip: {fileID: 8300000, guid: 9872ecfc9ba26a645bad088a2f90ffdd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: bgSound5
+    clip: {fileID: 8300000, guid: 503b241f0da6a844ea6ab359a1196cfc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: bgSound2
+    clip: {fileID: 8300000, guid: 4c26e939b9d130d4aa0d9fb7bb2e035c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
 --- !u!1 &1060505020
 GameObject:
   m_ObjectHideFlags: 0
