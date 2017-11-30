@@ -11,10 +11,6 @@ public class DialogueManager : MonoBehaviour
     public Text DialogueText;
     public Text DialogueTitle;
 
-    public Sprite[] Sprites;
-    public float AnimationSpeed;
-    public Image Avatar;
-
     public Text MessageText;
     public Text MessageTitle;
 
@@ -30,16 +26,6 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
         Debug.Log("DialogueManager Start");
-    }
-
-    public IEnumerator AnimateAvatar()
-    {
-        //destroy all game objects
-        for (int i = 0; i < Sprites.Length; i++)
-        {
-            Avatar.sprite = Sprites[i];
-            yield return new WaitForSeconds(AnimationSpeed);
-        }
     }
 
     //types out the sentence in thhe dialogue box
@@ -62,7 +48,6 @@ public class DialogueManager : MonoBehaviour
         {
             sentences.Enqueue(sentence);
         }
-        StartCoroutine(AnimateAvatar());
         DialogueTitle.text = dialogue.Name;
         DisplayNextSentence();
 
@@ -72,7 +57,6 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        StopCoroutine("AnimateAvatar");
         Dialogue.SetBool("IsOpen", false);
     }
 
