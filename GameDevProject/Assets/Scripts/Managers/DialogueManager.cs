@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.UIElements;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
@@ -11,7 +10,10 @@ public class DialogueManager : MonoBehaviour
 
     public Text DialogueText;
     public Text DialogueTitle;
-    public Animation Avatar;
+
+    public Sprite[] Sprites;
+    public float AnimationSpeed;
+    public Image Avatar;
 
     public Text MessageText;
     public Text MessageTitle;
@@ -28,6 +30,16 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
         Debug.Log("DialogueManager Start");
+    }
+
+    public IEnumerator AnimateAvatar()
+    {
+        //destroy all game objects
+        for (int i = 0; i < Sprites.Length; i++)
+        {
+            Avatar.sprite = Sprites[i];
+            yield return new WaitForSeconds(AnimationSpeed);
+        }
     }
 
     //types out the sentence in thhe dialogue box
@@ -50,16 +62,17 @@ public class DialogueManager : MonoBehaviour
         {
             sentences.Enqueue(sentence);
         }
-        Avatar.Play("spriteAnimation");
+        StartCoroutine(AnimateAvatar());
         DialogueTitle.text = dialogue.Name;
         DisplayNextSentence();
 
 
     }
 
+
     public void EndDialogue()
     {
-        Avatar.Stop();
+        StopCoroutine("AnimateAvatar");
         Dialogue.SetBool("IsOpen", false);
     }
 

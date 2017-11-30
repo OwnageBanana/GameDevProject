@@ -1926,7 +1926,6 @@ GameObject:
   - component: {fileID: 1302482109}
   - component: {fileID: 1302482111}
   - component: {fileID: 1302482110}
-  - component: {fileID: 1302482112}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -1985,21 +1984,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1302482108}
---- !u!111 &1302482112
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1302482108}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: bfcabe9d580f32e4199e9af39ac63ee6, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: bfcabe9d580f32e4199e9af39ac63ee6, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &1304994263
 GameObject:
   m_ObjectHideFlags: 0
@@ -3489,7 +3473,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueText: {fileID: 1095757587}
   DialogueTitle: {fileID: 1965814821}
-  Avatar: {fileID: 1302482112}
+  Sprites:
+  - {fileID: 21300000, guid: 66df97dfb3d84354e8a95566de0fe49f, type: 3}
+  - {fileID: 21300002, guid: 66df97dfb3d84354e8a95566de0fe49f, type: 3}
+  - {fileID: 21300004, guid: 66df97dfb3d84354e8a95566de0fe49f, type: 3}
+  AnimationSpeed: 0.5
+  Avatar: {fileID: 1302482110}
   MessageText: {fileID: 662701503}
   MessageTitle: {fileID: 1093925048}
   Dialogue: {fileID: 1362019958}
