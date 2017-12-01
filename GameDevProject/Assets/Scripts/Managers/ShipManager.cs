@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class ShipManager : MonoBehaviour {
+public class ShipManager : MonoBehaviour
+{
 
 
 
@@ -10,6 +12,8 @@ public class ShipManager : MonoBehaviour {
     // because unity doesnt support in editor modification of dictionaries and This datatype is really useful
     public GameObject[] roomTypes;
     private Dictionary<string, GameObject> roomTypesDict;
+
+    public List<NavMeshSurface> surfaces;
 
     //MaxShipSize/2 is the (0,0) coordinate in the world
     public int MaxShipSize = 11;
@@ -19,39 +23,46 @@ public class ShipManager : MonoBehaviour {
 
     private GameObject[,] rooms;
 
-
-    public ShipManager()
-    {
-    }
-
     public void initalizeRooms()
     {
         roomTypesDict = new Dictionary<string, GameObject>();
         //populating the dictionary with the different rooms
         foreach (GameObject room in roomTypes)
+        {
             roomTypesDict.Add(room.tag, room);
-
+        }
         //initalizing some variables for ship building
         rooms = new GameObject[MaxShipSize, MaxShipSize];
         center = (int)Mathf.Ceil(((float)MaxShipSize) / 2);
+
     }
 
     public void InitalizeShip()
     {
         //initalizing ship
-        rooms[center, center] = Instantiate(roomTypesDict["PilotBay"], new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
-        rooms[center, center - 1] = Instantiate(roomTypesDict["Engine"], new Vector3(0, 0, -roomSize), new Quaternion(0, 0, 0, 0));
-        rooms[center, center - 2] = Instantiate(roomTypesDict["AICore"], new Vector3(0, 0, -roomSize * 2), new Quaternion(0, 0, 0, 0));
-        rooms[center + 1, center - 1] = Instantiate(roomTypesDict["Gym"], new Vector3(roomSize, 0, -roomSize), new Quaternion(0, 0, 0, 0));
-        rooms[center + 1, center - 2] = Instantiate(roomTypesDict["Reactor"], new Vector3(roomSize, 0, -roomSize * 2), new Quaternion(0, 0, 0, 0));
-        rooms[center - 1, center - 1] = Instantiate(roomTypesDict["Cafeteria"], new Vector3(-roomSize, 0, -roomSize), new Quaternion(0, 0, 0, 0));
-        rooms[center - 1, center - 2] = Instantiate(roomTypesDict["Kitchen"], new Vector3(-roomSize, 0, -roomSize * 2), new Quaternion(0, 0, 0, 0));
-    }
+        InitializeRoomAtPos(0, 0,"PilotBay");
+        InitializeRoomAtPos(0, -1, "Engine");
+        InitializeRoomAtPos(0, -2, "AICore");
+        InitializeRoomAtPos(1, -1, "Gym");
+        InitializeRoomAtPos(1, -2,"Reactor");
+        InitializeRoomAtPos(-1, -1, "Cafeteria");
+        InitializeRoomAtPos(-1, -2, "Kitchen");
 
+        if (surfaces[0] != null)
+            surfaces[0].BuildNavMesh();
+
+    }
+    private void InitializeRoomAtPos(int xFromCenter, int zFromCenter,string tag)
+    {
+        rooms[center + xFromCenter, center + zFromCenter] = Instantiate(roomTypesDict[tag], new Vector3(roomSize * xFromCenter, 0, roomSize* zFromCenter), new Quaternion(0, 0, 0, 0));
+        surfaces.Add(rooms[center + xFromCenter, center + zFromCenter].GetComponent<NavMeshSurface>());
+        var atb = rooms[center + xFromCenter, center + zFromCenter].GetComponent<RoomAttribute>();
+        atb.x = center + xFromCenter;
+        atb.z = center + zFromCenter;
+    }
 
     public RoomAttribute AddRoom()
     {
-
         RoomAttribute t = new RoomAttribute();
 
 

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GameController : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class GameController : MonoBehaviour
     public EventManager eventManager;
     public ResourceManager resourceManager;
     public ShipManager shipManager;
-    //public AudioManager audioManager;
+    public AudioManager audioManager;
+
 
     public Camera MainCamera;
     public LayerMask clickablesLayer;
@@ -55,8 +57,6 @@ public class GameController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Raycast on click");
-            Debug.Log(clickablesLayer.value);
-            Debug.Log(clickablesLayer);
             RaycastHit rayHit;
             bool hit = Physics.Raycast(MainCamera.ScreenPointToRay(Input.mousePosition), out rayHit, clickablesLayer);
             if (hit)
