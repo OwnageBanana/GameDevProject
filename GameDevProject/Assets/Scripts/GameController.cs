@@ -68,7 +68,10 @@ public class GameController : MonoBehaviour
                 Debug.Log(room.z + " " +  room.x);
 
             }
+            shipManager.AddRoom("Gym");
+
         }
+
         checkSentMessage();
 
     }

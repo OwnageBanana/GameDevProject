@@ -1191,8 +1191,8 @@ MonoBehaviour:
   - {fileID: 1125365046232854, guid: da8bb1469988e764db59c6896b0d4253, type: 2}
   - {fileID: 1057830373549634, guid: f9e913bce1340834480956f6c4aff8c2, type: 2}
   surfaces: []
-  MaxShipSize: 11
-  center: 6
+  MaxShipSize: 6
+  center: 3
 --- !u!1 &957123300
 GameObject:
   m_ObjectHideFlags: 0
@@ -2992,7 +2992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panSpeed: 20
   panBorderThinkness: 10
-  panLimit: {x: 10, y: 10}
+  panLimit: {x: 15, y: 15}
   scrollSpeed: 10
   minY: 20
   maxY: 40
