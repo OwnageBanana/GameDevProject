@@ -11,6 +11,8 @@ public class ShipManager : MonoBehaviour
 
     // because unity doesnt support in editor modification of dictionaries and This datatype is really useful
     public GameObject[] roomTypes;
+    public RoomManager roomManager;
+
     private Dictionary<string, GameObject> roomTypesDict;
 
     public List<NavMeshSurface> surfaces;
@@ -60,10 +62,15 @@ public class ShipManager : MonoBehaviour
         var atb = rooms[x, z].GetComponent<RoomAttribute>();
         atb.x = x;
         atb.z = z;
+        atb.Room = tag;
 
         if (surfaces[0] != null)
+        {
             surfaces[0].BuildNavMesh();
-
+            var people = GetComponents<RandomWalk>();
+            foreach (RandomWalk person in people)
+                person.ResetNavMesh();
+        }
     }
 
     public void AddRoom(string tag)
@@ -120,5 +127,39 @@ public class ShipManager : MonoBehaviour
             int r = Random.Range(0, toSelect.Count - 1);
             InitializeRoomAtPos(toSelect[r].Key, toSelect[r].Value, tag);
         }
+
     }
+
+    public void EnableRoom()
+    {
+        roomManager.selectedRoom.roomEnabled = true;
+        var selectedRoom = rooms[roomManager.selectedRoom.x, roomManager.selectedRoom.z].GetComponent<RoomAttribute>();
+        selectedRoom.roomEnabled = roomManager.selectedRoom.roomEnabled;
+
+        var lights = rooms[roomManager.selectedRoom.x, roomManager.selectedRoom.z].GetComponentsInChildren<Light>();
+
+        roomManager.Enabled.isOn = true;
+
+        for (int i = 0; i < lights.Length; i++)
+        {
+            lights[i].intensity = 6.8f;
+        }
+    }
+
+    public void DisableRoom()
+    {
+        roomManager.selectedRoom.roomEnabled = false;
+        var selectedRoom = rooms[roomManager.selectedRoom.x, roomManager.selectedRoom.z].GetComponent<RoomAttribute>();
+        selectedRoom.roomEnabled = roomManager.selectedRoom.roomEnabled;
+
+        roomManager.Enabled.isOn = false;
+
+        var lights = rooms[roomManager.selectedRoom.x, roomManager.selectedRoom.z].GetComponentsInChildren<Light>();
+
+        for (int i = 0; i < lights.Length; i++)
+        {
+            lights[i].intensity =  0f;
+        }
+    }
+
 }

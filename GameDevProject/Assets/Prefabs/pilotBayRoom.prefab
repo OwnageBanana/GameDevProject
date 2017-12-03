@@ -221,8 +221,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.92, y: 0.5, z: 3.92}
-  m_Center: {x: -2.15, y: 0.3, z: -2.15}
+  m_Size: {x: 4, y: 0.15, z: 4}
+  m_Center: {x: -2.15, y: 0.1, z: -2.15}
 --- !u!108 &108504244780563570
 Light:
   m_ObjectHideFlags: 1
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
   m_TileSize: 256
-  m_OverrideVoxelSize: 0
+  m_OverrideVoxelSize: 1
   m_VoxelSize: 0.033333335
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}

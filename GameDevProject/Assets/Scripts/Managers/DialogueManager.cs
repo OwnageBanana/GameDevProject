@@ -31,12 +31,16 @@ public class DialogueManager : MonoBehaviour
     //types out the sentence in thhe dialogue box
     IEnumerator TypeSentence(string sentence)
     {
+        var audio_m = FindObjectOfType<AudioManager>();
+        audio_m.play("MessageSound");
         DialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
             DialogueText.text += letter;
             yield return null;
         }
+        audio_m.stop("MessageSound");
+
     }
 
     public void StartDailogue(Dialogue dialogue)

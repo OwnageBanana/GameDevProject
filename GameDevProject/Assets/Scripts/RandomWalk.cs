@@ -15,9 +15,19 @@ public class RandomWalk : MonoBehaviour
 
     void Update()
     {
-        if (m_agent.pathPending || m_agent.remainingDistance > 0.1f)
-            return;
+        if (m_agent != null)
+        {
+            if (m_agent.pathPending || m_agent.remainingDistance > 0.1f)
+                return;
 
-        m_agent.destination = m_Range * Random.insideUnitCircle;
+            m_agent.destination = new Vector3(m_Range * Random.insideUnitCircle.x,0 , m_Range * Random.insideUnitCircle.y);
+
+        }
+    }
+
+    public void ResetNavMesh()
+    {
+        Debug.Log("GotCalled");
+        m_agent = GetComponent<NavMeshAgent>();
     }
 }

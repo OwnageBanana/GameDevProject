@@ -61,11 +61,9 @@ public class GameController : MonoBehaviour
             bool hit = Physics.Raycast(MainCamera.ScreenPointToRay(Input.mousePosition), out rayHit, clickablesLayer);
             if (hit)
             {
-                //ClickOn clickOnScript = rayHit.collider.GetComponent<ClickOn>();
                 RoomAttribute room = rayHit.collider.GetComponent<RoomAttribute>();
-                //clickOnScript.currentlySelected = !clickOnScript.currentlySelected;
-                //clickOnScript.ClickMe();
-                Debug.Log(room.z + " " +  room.x);
+                Debug.Log("Displaying Menu");
+                shipManager.roomManager.DisplayMenu(room);
 
             }
             shipManager.AddRoom("Gym");
