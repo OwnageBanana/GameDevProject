@@ -166,6 +166,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4363971277518786}
   - component: {fileID: 114435327944144704}
+  - component: {fileID: 65668002704899096}
+  - component: {fileID: 114057345796500932}
   m_Layer: 9
   m_Name: CafeteriaRoom
   m_TagString: Cafeteria
@@ -1443,6 +1445,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1771479587478704}
   m_Mesh: {fileID: 4300004, guid: 63ba9d043be4eec4d8cb83991b2cf127, type: 3}
+--- !u!65 &65668002704899096
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368576100863774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 0.15, z: 4}
+  m_Center: {x: -2.15, y: 0.1, z: -2.15}
 --- !u!108 &108464076787548024
 Light:
   m_ObjectHideFlags: 1
@@ -1515,6 +1529,34 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114057345796500932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368576100863774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 1
+  m_VoxelSize: 0.033333335
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 0}
 --- !u!114 &114435327944144704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1528,17 +1570,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Room: {fileID: 1368576100863774}
   gain:
-    Food: 0
-    Happiness: 0
+    Food: 2
+    Happiness: 2
     Karma: 0
     Energy: 0
     ShipHp: 0
-    Garbage: 0
+    Garbage: 2
   cost:
     Food: 0
     Happiness: 0
     Karma: 0
-    Energy: 0
+    Energy: 2
     ShipHp: 0
     Garbage: 0
   x: 0

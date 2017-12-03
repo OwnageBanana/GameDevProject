@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GameController : MonoBehaviour
 {
@@ -10,7 +11,11 @@ public class GameController : MonoBehaviour
     public EventManager eventManager;
     public ResourceManager resourceManager;
     public ShipManager shipManager;
-    //public AudioManager audioManager;
+    public AudioManager audioManager;
+
+
+    public Camera MainCamera;
+    public LayerMask clickablesLayer;
 
     public static GameController instance;
 
@@ -48,6 +53,23 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Raycast on click");
+            RaycastHit rayHit;
+            bool hit = Physics.Raycast(MainCamera.ScreenPointToRay(Input.mousePosition), out rayHit, clickablesLayer);
+            if (hit)
+            {
+                RoomAttribute room = rayHit.collider.GetComponent<RoomAttribute>();
+                Debug.Log("Displaying Menu");
+                shipManager.roomManager.DisplayMenu(room);
+
+            }
+            shipManager.AddRoom("Gym");
+
+        }
+
         checkSentMessage();
 
     }
