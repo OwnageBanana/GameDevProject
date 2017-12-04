@@ -10,10 +10,11 @@ public class CameraController : MonoBehaviour {
     public float minY=20f;
     public float maxY=600f;
 
-	// Update is called once per frame
-	void Update () {
-        Vector3 pos = transform.position;
-
+    public Vector3 pos;
+    // Update is called once per frame
+    void Update () {
+        //Vector3 pos = transform.position;
+        pos = transform.position;
         if (Input.GetKey("w")||Input.GetKey(KeyCode.UpArrow)||Input.mousePosition.y >= Screen.height -panBorderThinkness )
         {
             pos.z += panSpeed * Time.deltaTime;
@@ -41,4 +42,5 @@ public class CameraController : MonoBehaviour {
         transform.position = pos;
            
     }
+   
 }
