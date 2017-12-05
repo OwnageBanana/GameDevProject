@@ -61,14 +61,13 @@ public class GameController : MonoBehaviour
         // if left click with mouse and the menu isn't already open
         if (Input.GetMouseButtonDown(0) && !shipManager.roomManager.Panel.activeSelf)
         {
-            Debug.Log("Raycast on click");
             RaycastHit rayHit;
             bool hit = Physics.Raycast(MainCamera.ScreenPointToRay(Input.mousePosition), out rayHit, clickablesLayer);
             if (hit)
             {
                 RoomAttribute room = rayHit.collider.GetComponent<RoomAttribute>();
-                Debug.Log("Displaying Menu");
-                shipManager.roomManager.DisplayMenu(room);
+                if (room != null)
+                    shipManager.roomManager.DisplayMenu(room);
 
             }
 
