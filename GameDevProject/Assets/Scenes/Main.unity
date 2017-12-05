@@ -1329,7 +1329,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294965247
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: e9ae8cd3c45c8f34481aa649a28c6bd0, type: 2}
   m_TargetDisplay: 0
@@ -3483,7 +3483,7 @@ GameObject:
   - component: {fileID: 1215380212}
   - component: {fileID: 1215380211}
   - component: {fileID: 1215380210}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Starfieldfrount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6283,7 +6283,7 @@ GameObject:
   - component: {fileID: 1890288748}
   - component: {fileID: 1890288752}
   - component: {fileID: 1890288753}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Starfield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
