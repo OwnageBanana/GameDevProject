@@ -25,6 +25,7 @@ public class ShipManager : MonoBehaviour
 
     private GameObject[,] rooms;
 
+
     public void initalizeRooms()
     {
         roomTypesDict = new Dictionary<string, GameObject>();
@@ -43,9 +44,9 @@ public class ShipManager : MonoBehaviour
     public void InitalizeShip()
     {
         //initalizing ship
-        InitializeRoomAtPos(center-1, 0, "PilotBay");
-        InitializeRoomAtPos(center-1, 1, "Engine");
-        InitializeRoomAtPos(center-1, 2, "AICore");
+        InitializeRoomAtPos(center - 1, 0, "PilotBay");
+        InitializeRoomAtPos(center - 1, 1, "Engine");
+        InitializeRoomAtPos(center - 1, 2, "AICore");
         InitializeRoomAtPos(center, 1, "Gym");
         InitializeRoomAtPos(center, 2, "Reactor");
         InitializeRoomAtPos(center - 2, 1, "Cafeteria");
@@ -57,7 +58,7 @@ public class ShipManager : MonoBehaviour
     private void InitializeRoomAtPos(int x, int z, string tag)
     {
         //initalizing the room in hte world space
-        rooms[x, z] = Instantiate(roomTypesDict[tag], new Vector3((roomSize * x) - (center * roomSize) , 0,(center * roomSize) + ( roomSize * -z)), new Quaternion(0, 0, 0, 0));
+        rooms[x, z] = Instantiate(roomTypesDict[tag], new Vector3((roomSize * x) - (center * roomSize), 0, (center * roomSize) + (roomSize * -z)), new Quaternion(0, 0, 0, 0));
         surfaces.Add(rooms[x, z].GetComponent<NavMeshSurface>());
         var atb = rooms[x, z].GetComponent<RoomAttribute>();
         atb.x = x;
@@ -81,7 +82,8 @@ public class ShipManager : MonoBehaviour
             freeSpaces.Add(i, new List<int>());
 
         //lazy alg for finding empty spaces in the room
-        for (int i = 0; i < MaxShipSize; i++) {
+        for (int i = 0; i < MaxShipSize; i++)
+        {
             for (int j = 0; j < MaxShipSize; j++)
             {
                 // if room exists at j,i, test spaces around it to add as empty spaces
@@ -104,19 +106,20 @@ public class ShipManager : MonoBehaviour
                     {
                         if (rooms[j, i - 1] == null)
                             if (!freeSpaces[j].Contains(i - 1))
-                                freeSpaces[j].Add(i- 1);
+                                freeSpaces[j].Add(i - 1);
 
                     }
                     if (i + 1 < MaxShipSize)
                     {
                         if (rooms[j, i + 1] == null)
                             if (!freeSpaces[j].Contains(i))
-                                freeSpaces[j].Add(i+1);
+                                freeSpaces[j].Add(i + 1);
                     }
                 }
             }
         }
 
+        //list of positions in the rooms array that new rooms can be placed at
         List<KeyValuePair<int, int>> toSelect = new List<KeyValuePair<int, int>>();
         for (int i = 0; i < MaxShipSize; i++)
             foreach (int row in freeSpaces[i])
@@ -130,6 +133,45 @@ public class ShipManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    ///sums all costs and gains of all active rooms
+    /// </summary>
+    /// <returns>returns the cost/gain for all rooms as a resource collection</returns>
+    public Resources getResourceDeltas()
+    {
+        Resources delta = new Resources();
+
+
+        for (int i = 0; i < MaxShipSize; i++)
+        {
+            for (int j = 0; j < MaxShipSize; j++)
+            {
+                var roomAtb = rooms[j, i].GetComponent<RoomAttribute>();
+                if (roomAtb.roomEnabled)
+                {
+                    delta.Food += roomAtb.gain.Food;
+                    delta.Energy += roomAtb.gain.Energy;
+                    delta.ShipHp += roomAtb.gain.ShipHp;
+                    delta.Happiness += roomAtb.gain.Happiness;
+                    delta.Garbage += roomAtb.gain.Garbage;
+                    delta.Karma += roomAtb.gain.Karma;
+
+                    delta.Food -= roomAtb.cost.Food;
+                    delta.Energy -= roomAtb.cost.Energy;
+                    delta.ShipHp -= roomAtb.cost.ShipHp;
+                    delta.Happiness -= roomAtb.cost.Happiness;
+                    delta.Garbage -= roomAtb.cost.Garbage;
+                    delta.Karma -= roomAtb.cost.Karma;
+                }
+            }
+        }
+
+        return delta;
+    }
+
+    /// <summary>
+    /// enables the room based on the ui. Changes lights in the room to indicate to player
+    /// </summary>
     public void EnableRoom()
     {
         roomManager.selectedRoom.roomEnabled = true;
@@ -146,6 +188,9 @@ public class ShipManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// disables the room based on the ui. Changes lights in the room to indicate to player
+    /// </summary>
     public void DisableRoom()
     {
         roomManager.selectedRoom.roomEnabled = false;
@@ -158,7 +203,7 @@ public class ShipManager : MonoBehaviour
 
         for (int i = 0; i < lights.Length; i++)
         {
-            lights[i].intensity =  0f;
+            lights[i].intensity = 0f;
         }
     }
 

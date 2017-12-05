@@ -21,8 +21,13 @@ public class GameController : MonoBehaviour
 
     public Dialogue startDialogue;
 
-    public int eventOccuranceMin;
-    public int eventOccuranceMax;
+    public int eventIntervalMin;
+    public int eventIntervalMax;
+    private float timeToEvent;
+
+    public int roomSpawnIntervalMin;
+    public int roomSpawnIntervalMax;
+    public float timeToRoomSpawn;
 
     private Event currentEvent;
 
@@ -53,8 +58,8 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetMouseButtonDown(0))
+        // if left click with mouse and the menu isn't already open
+        if (Input.GetMouseButtonDown(0) && !shipManager.roomManager.Panel.activeSelf)
         {
             Debug.Log("Raycast on click");
             RaycastHit rayHit;
@@ -66,10 +71,8 @@ public class GameController : MonoBehaviour
                 shipManager.roomManager.DisplayMenu(room);
 
             }
-            shipManager.AddRoom("Gym");
 
         }
-
         checkSentMessage();
 
     }
