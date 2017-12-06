@@ -1,17 +1,17 @@
-﻿using System.Collections;
+﻿//Author: Adam Mills
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class ShipManager : MonoBehaviour
 {
-
-
-
-
     // because unity doesnt support in editor modification of dictionaries and This datatype is really useful
     public GameObject[] roomTypes;
     public RoomManager roomManager;
+    public List<GameObject> People;
+
 
     private Dictionary<string, GameObject> roomTypesDict;
 
@@ -52,9 +52,14 @@ public class ShipManager : MonoBehaviour
         InitializeRoomAtPos(center - 2, 1, "Cafeteria");
         InitializeRoomAtPos(center - 2, 2, "Kitchen");
 
-
-
     }
+
+    public void AddRandomRoom()
+    {
+        int r = Random.Range(0, roomTypes.Length - 1);
+        AddRoom(roomTypes[r].tag);
+    }
+
     private void InitializeRoomAtPos(int x, int z, string tag)
     {
         //initalizing the room in hte world space
@@ -65,13 +70,17 @@ public class ShipManager : MonoBehaviour
         atb.z = z;
         atb.Room = tag;
 
+        SpawnPerson(x, z);
         if (surfaces[0] != null)
         {
             surfaces[0].BuildNavMesh();
-            var people = GetComponents<RandomWalk>();
-            foreach (RandomWalk person in people)
-                person.ResetNavMesh();
         }
+    }
+
+    public void SpawnPerson(int x, int z)
+    {
+        int r = Random.Range(0, People.Count - 1);
+        Instantiate(People[r], new Vector3((roomSize * x) - (center * roomSize), 0.5f, (center * roomSize) + (roomSize * -z)), new Quaternion(0, 0, 0, 0));
     }
 
     public void AddRoom(string tag)
@@ -137,7 +146,7 @@ public class ShipManager : MonoBehaviour
     ///sums all costs and gains of all active rooms
     /// </summary>
     /// <returns>returns the cost/gain for all rooms as a resource collection</returns>
-    public Resources getResourceDeltas()
+    public Resources GetResourceDeltas()
     {
         Resources delta = new Resources();
 

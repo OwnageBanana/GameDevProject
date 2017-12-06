@@ -8,7 +8,7 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour
 {
     //static resource object, has resource values
-    public static Resources resources;
+    public Resources resources;
     public HUDController HUD;
 
     //resource caps. may change thrroughout the game
