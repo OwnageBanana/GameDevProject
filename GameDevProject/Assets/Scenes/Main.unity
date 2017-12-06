@@ -2411,6 +2411,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4bb150124891d4ab6d550e05c60c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resources:
+    Food: 0
+    Happiness: 0
+    Karma: 0
+    Energy: 0
+    ShipHp: 0
+    Garbage: 0
   HUD: {fileID: 0}
   FoodCap: 100
   EnergyCap: 100
@@ -3764,14 +3771,15 @@ MonoBehaviour:
     - In the event of a catastrophic failure the quantum entangled comunicator in
       your core will send you right back to my lab.
     - The Humans aboard that vessel aren't the brightest minds in the Federation,
-      but there is an overpopulation issue so this is their idea of two birds with
-      one stone, so to speak.
+      but there is an overpopulation issue so this is the Federation's idea of two
+      birds with one stone, so to speak.
     - Good luck on your trip, you will most certainly need it.
   eventIntervalMin: 0
   eventIntervalMax: 0
   roomSpawnIntervalMin: 0
   roomSpawnIntervalMax: 0
   timeToRoomSpawn: 0
+  resourceTick: 0
 --- !u!1 &1244132487
 GameObject:
   m_ObjectHideFlags: 0

@@ -76,7 +76,7 @@ public class GameController : MonoBehaviour
         progressBar.value = progress / GameLength;
 
 
-        //Player has won, end the game
+        //TODO:Player has won, end the game
         if (progress / GameLength >= 1)
             ;
 
@@ -155,9 +155,11 @@ public class GameController : MonoBehaviour
         GameLength = 8 * 60;
         eventIntervalMin = 30;
         eventIntervalMax = 40;
+        timeToEvent = UnityEngine.Random.Range(eventIntervalMin, eventIntervalMax);
 
         roomSpawnIntervalMin = 30;
         roomSpawnIntervalMax = 60;
+        timeToRoomSpawn = UnityEngine.Random.Range(roomSpawnIntervalMin, roomSpawnIntervalMax);
     }
     public void setMedium()
     {
@@ -165,9 +167,11 @@ public class GameController : MonoBehaviour
 
         eventIntervalMin = 30;
         eventIntervalMax = 40;
+        timeToEvent = UnityEngine.Random.Range(eventIntervalMin, eventIntervalMax);
 
         roomSpawnIntervalMin = 30;
         roomSpawnIntervalMax = 40;
+        timeToRoomSpawn = UnityEngine.Random.Range(roomSpawnIntervalMin, roomSpawnIntervalMax);
     }
 
     public void setHard()
@@ -175,9 +179,11 @@ public class GameController : MonoBehaviour
         GameLength = 15 * 60;
         eventIntervalMin = 30;
         eventIntervalMax = 40;
+        timeToEvent = UnityEngine.Random.Range(eventIntervalMin, eventIntervalMax);
 
         roomSpawnIntervalMin = 20;
         roomSpawnIntervalMax = 40;
+        timeToRoomSpawn = UnityEngine.Random.Range(roomSpawnIntervalMin, roomSpawnIntervalMax);
     }
 
 }

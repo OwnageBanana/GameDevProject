@@ -80,7 +80,8 @@ public class ShipManager : MonoBehaviour
     public void SpawnPerson(int x, int z)
     {
         int r = Random.Range(0, People.Count - 1);
-        Instantiate(People[r], new Vector3((roomSize * x) - (center * roomSize), 0.5f, (center * roomSize) + (roomSize * -z)), new Quaternion(0, 0, 0, 0));
+        //spawn a random person in new room in doorway ( hence rooroomSize/2)
+        Instantiate(People[r], new Vector3((roomSize * x) - (center * roomSize) - (roomSize/2), 0.5f, (center * roomSize) + (roomSize * -z)), new Quaternion(0, 0, 0, 0));
     }
 
     public void AddRoom(string tag)
