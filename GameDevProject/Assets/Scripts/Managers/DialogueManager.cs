@@ -25,7 +25,6 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
-        Debug.Log("DialogueManager Start");
     }
 
     //types out the sentence in thhe dialogue box
@@ -45,7 +44,6 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDailogue(Dialogue dialogue)
     {
-        Debug.Log("playing dialog from the controller");
         sentences.Clear();
         Dialogue.SetBool("IsOpen", true);
         foreach (string sentence in dialogue.Sentences)

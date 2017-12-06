@@ -40,7 +40,9 @@ public class ShipManager : MonoBehaviour
 
 
     }
-
+    /// <summary>
+    /// places inital ship blocks
+    /// </summary>
     public void InitalizeShip()
     {
         //initalizing ship
@@ -54,34 +56,75 @@ public class ShipManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Adds random room to ship
+    /// </summary>
     public void AddRandomRoom()
     {
         int r = Random.Range(0, roomTypes.Length - 1);
         AddRoom(roomTypes[r].tag);
     }
 
+    /// <summary>
+    /// Counts the number of engines that are turned on in the ship
+    /// </summary>
+    /// <returns>count of enabled engines</returns>
+    public int GetEngineCount()
+    {
+        int count = 0;
+        for (int i = 0; i < MaxShipSize; i++)
+        {
+            for (int j = 0; j < MaxShipSize; j++)
+            {
+                if (rooms[j, i] != null)
+                {
+                    if (rooms[j, i].GetComponent<RoomAttribute>().roomEnabled)
+                        count++;
+                }
+            }
+        }
+        return count;
+    }
+
+
+    /// <summary>
+    /// innitalizes a room at a position provided
+    /// </summary>
+    /// <param name="x">x position in room array</param>
+    /// <param name="z">z position in room array</param>
+    /// <param name="tag">ship to put in array</param>
     private void InitializeRoomAtPos(int x, int z, string tag)
     {
         //initalizing the room in hte world space
         rooms[x, z] = Instantiate(roomTypesDict[tag], new Vector3((roomSize * x) - (center * roomSize), 0, (center * roomSize) + (roomSize * -z)), new Quaternion(0, 0, 0, 0));
+        //add nav mesh to room
         surfaces.Add(rooms[x, z].GetComponent<NavMeshSurface>());
+        //updating the room attribute
         var atb = rooms[x, z].GetComponent<RoomAttribute>();
         atb.x = x;
         atb.z = z;
+        atb.roomEnabled = true;
         atb.Room = tag;
 
+        //spawning a person in the room, keeps the ship populated
         SpawnPerson(x, z);
         if (surfaces[0] != null)
         {
+            //building the navmesh for ALL rooms
             surfaces[0].BuildNavMesh();
         }
     }
 
+    /// <summary>
+    /// spawns a random person at provided coordonates
+    /// </summary>
+    /// <param name="x">x posiion in room array as reference to put person in world</param>
+    /// <param name="z">z posiion in room array as reference to put person in world</param>
     public void SpawnPerson(int x, int z)
     {
         int r = Random.Range(0, People.Count - 1);
         //spawn a random person in new room in doorway ( hence rooroomSize/2)
-        Instantiate(People[r], new Vector3((roomSize * x) - (center * roomSize) - (roomSize/2), 0.5f, (center * roomSize) + (roomSize * -z)), new Quaternion(0, 0, 0, 0));
+        Instantiate(People[r], new Vector3((roomSize * x) - (center * roomSize) - (roomSize / 2), 0.5f, (center * roomSize) + (roomSize * -z)), new Quaternion(0, 0, 0, 0));
     }
 
     public void AddRoom(string tag)
@@ -156,22 +199,26 @@ public class ShipManager : MonoBehaviour
         {
             for (int j = 0; j < MaxShipSize; j++)
             {
-                var roomAtb = rooms[j, i].GetComponent<RoomAttribute>();
-                if (roomAtb.roomEnabled)
+                if (rooms[j, i] != null)
                 {
-                    delta.Food += roomAtb.gain.Food;
-                    delta.Energy += roomAtb.gain.Energy;
-                    delta.ShipHp += roomAtb.gain.ShipHp;
-                    delta.Happiness += roomAtb.gain.Happiness;
-                    delta.Garbage += roomAtb.gain.Garbage;
-                    delta.Karma += roomAtb.gain.Karma;
+                    var roomAtb = rooms[j, i].GetComponent<RoomAttribute>();
+                    if (roomAtb.roomEnabled)
+                    {
+                        //summing deltas for resources
+                        delta.Food += roomAtb.gain.Food;
+                        delta.Energy += roomAtb.gain.Energy;
+                        delta.ShipHp += roomAtb.gain.ShipHp;
+                        delta.Happiness += roomAtb.gain.Happiness;
+                        delta.Garbage += roomAtb.gain.Garbage;
+                        delta.Karma += roomAtb.gain.Karma;
 
-                    delta.Food -= roomAtb.cost.Food;
-                    delta.Energy -= roomAtb.cost.Energy;
-                    delta.ShipHp -= roomAtb.cost.ShipHp;
-                    delta.Happiness -= roomAtb.cost.Happiness;
-                    delta.Garbage -= roomAtb.cost.Garbage;
-                    delta.Karma -= roomAtb.cost.Karma;
+                        delta.Food -= roomAtb.cost.Food;
+                        delta.Energy -= roomAtb.cost.Energy;
+                        delta.ShipHp -= roomAtb.cost.ShipHp;
+                        delta.Happiness -= roomAtb.cost.Happiness;
+                        delta.Garbage -= roomAtb.cost.Garbage;
+                        delta.Karma -= roomAtb.cost.Karma;
+                    }
                 }
             }
         }
@@ -184,14 +231,17 @@ public class ShipManager : MonoBehaviour
     /// </summary>
     public void EnableRoom()
     {
+        //enabling room
         roomManager.selectedRoom.roomEnabled = true;
+        //getting room attribute from room
         var selectedRoom = rooms[roomManager.selectedRoom.x, roomManager.selectedRoom.z].GetComponent<RoomAttribute>();
         selectedRoom.roomEnabled = roomManager.selectedRoom.roomEnabled;
 
+        //getting list of lights to turn on in the room
         var lights = rooms[roomManager.selectedRoom.x, roomManager.selectedRoom.z].GetComponentsInChildren<Light>();
 
         roomManager.Enabled.isOn = true;
-
+        //turrning on lights in room
         for (int i = 0; i < lights.Length; i++)
         {
             lights[i].intensity = 6.8f;
@@ -203,14 +253,16 @@ public class ShipManager : MonoBehaviour
     /// </summary>
     public void DisableRoom()
     {
+        //disabling room
         roomManager.selectedRoom.roomEnabled = false;
+        //getting room attribute from room
         var selectedRoom = rooms[roomManager.selectedRoom.x, roomManager.selectedRoom.z].GetComponent<RoomAttribute>();
         selectedRoom.roomEnabled = roomManager.selectedRoom.roomEnabled;
 
         roomManager.Enabled.isOn = false;
-
+        //getting list of lights to turn off in the room
         var lights = rooms[roomManager.selectedRoom.x, roomManager.selectedRoom.z].GetComponentsInChildren<Light>();
-
+        //turrning off lights in room
         for (int i = 0; i < lights.Length; i++)
         {
             lights[i].intensity = 0f;

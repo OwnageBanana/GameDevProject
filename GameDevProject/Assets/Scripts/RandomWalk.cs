@@ -29,7 +29,6 @@ public class RandomWalk : MonoBehaviour
 
     public void ResetNavMesh()
     {
-        Debug.Log("GotCalled");
         m_agent = GetComponent<NavMeshAgent>();
     }
 }

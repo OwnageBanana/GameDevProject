@@ -859,7 +859,7 @@ MonoBehaviour:
   Room: $
   gain:
     Food: 0
-    Happiness: 1
+    Happiness: 2
     Karma: 0
     Energy: 0
     ShipHp: 0
@@ -868,7 +868,7 @@ MonoBehaviour:
     Food: 2
     Happiness: 0
     Karma: 0
-    Energy: 0
+    Energy: 3
     ShipHp: 0
     Garbage: 0
   x: 0

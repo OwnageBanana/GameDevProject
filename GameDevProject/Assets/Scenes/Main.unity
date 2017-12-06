@@ -2418,7 +2418,7 @@ MonoBehaviour:
     Energy: 0
     ShipHp: 0
     Garbage: 0
-  HUD: {fileID: 0}
+  HUD: {fileID: 516307827}
   FoodCap: 100
   EnergyCap: 100
   ShipHpCap: 100

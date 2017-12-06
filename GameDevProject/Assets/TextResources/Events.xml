@@ -26,7 +26,49 @@ ADHEAR TO THE SAME DATA TYPE AS SPECIFIED, DO NOT LEAVE NULL FIELDS, LEAVE EMPTY
 -->
 <ArrayOfEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Event>
-    <Description>abc</Description>
+    <Description>An Alien Ship approaches, it is the Grob! They are nutoriously hostile but appear to want to trade energy for food. Do you lower your shields to trade?</Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>5</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>10</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Cost>
+    <EventId>1</EventId>
+    <EventType>bad</EventType>
+  </Event>
+  <Event>
+    <Description>You are coming up to a cluster of asteroids that may have valueable energy crystals, do you stop to gather the crystals?</Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>10</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Cost>
+    <EventId>2</EventId>
+    <EventType>Good</EventType>
+  </Event>
+  <Event>
+    <Description>ghi</Description>
     <Reward>
       <Food>0</Food>
       <Happiness>2</Happiness>
@@ -43,7 +85,7 @@ ADHEAR TO THE SAME DATA TYPE AS SPECIFIED, DO NOT LEAVE NULL FIELDS, LEAVE EMPTY
       <Garbage>4</Garbage>
       <Karma>0</Karma>
     </Cost>
-    <EventId>1</EventId>
+    <EventId>3</EventId>
     <EventType>Good</EventType>
   </Event>
   <Event>
@@ -88,6 +130,8 @@ ADHEAR TO THE SAME DATA TYPE AS SPECIFIED, DO NOT LEAVE NULL FIELDS, LEAVE EMPTY
     <EventId>3</EventId>
     <EventType>Good</EventType>
   </Event>
+
+
 </ArrayOfEvent>
 
 

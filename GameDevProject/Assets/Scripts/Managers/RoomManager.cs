@@ -30,7 +30,6 @@ public class RoomManager : MonoBehaviour
     //Update is called once per frame
     public void DisplayMenu(RoomAttribute room)
     {
-        Debug.Log("writing text");
 
         Panel.SetActive(true);
 

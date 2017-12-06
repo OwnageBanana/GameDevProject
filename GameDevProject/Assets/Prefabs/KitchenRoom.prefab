@@ -467,9 +467,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0bddaee6fc3a8d42b2287ee51793484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Room: {fileID: 1749466601617410}
+  Room: $
   gain:
-    Food: 2
+    Food: 3
     Happiness: 1
     Karma: 0
     Energy: 0
@@ -481,6 +481,7 @@ MonoBehaviour:
     Karma: 0
     Energy: 2
     ShipHp: 0
-    Garbage: 0
+    Garbage: 2
   x: 0
   z: 0
+  roomEnabled: 1

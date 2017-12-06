@@ -9,7 +9,6 @@ public class Click : MonoBehaviour {
 	void Update () {
 		if(Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Raycast on click");
             RaycastHit rayHit;
             if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out rayHit, clickablesLayer))
             {

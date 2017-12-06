@@ -66,20 +66,23 @@ public class GameController : MonoBehaviour
     {
         shipManager.initalizeRooms();
         shipManager.InitalizeShip();
-        setEasy();
+        setMedium();
     }
 
     // Update is called once per frame
     void Update()
     {
         //updating progress bar, checking if player won game
-        progress += Time.deltaTime;
+        progress += (Time.deltaTime) * shipManager.GetEngineCount();
         progressBar.value = progress / GameLength;
 
 
         //Player has won, end the game
         if (progress / GameLength >= 1)
             SceneManager.LoadScene("Victory");
+
+
+
 
         // if left click with mouse and the menu isn't already open
         if (Input.GetMouseButtonDown(0) && !shipManager.roomManager.Panel.activeSelf)
@@ -96,38 +99,52 @@ public class GameController : MonoBehaviour
 
         }
 
+        //resource timer loop
         resourceTick += Time.deltaTime;
 
-        if (resourceTick >= 30)
-            resourceManager.AddResources(shipManager.GetResourceDeltas());
-
+        if (resourceTick >= 10)
+        {
+            if (resourceManager.CheckLost())
+                SceneManager.LoadScene("Lost");
+            resourceTick = 0;
+            resourceManager.ChangeResources(shipManager.GetResourceDeltas());
+        }
+        //event timer loop
         eventTimer += Time.deltaTime;
 
         if (eventTimer >= timeToEvent)
         {
+            //pick an event to run
             currentEvent = eventManager.PickEvent(resourceManager.resources);
-            eventTimer = 0;
+            //display event
             dialogueManager.StartEvent(currentEvent);
-
+            //reset timer
+            eventTimer = 0;
             timeToEvent = UnityEngine.Random.Range(eventIntervalMin, eventIntervalMax);
         }
 
+        //room timer loop
         roomTimer += Time.deltaTime;
         if (roomTimer >= timeToRoomSpawn)
         {
+            //spawn room
             shipManager.AddRandomRoom();
+            //reset room timer
+            roomTimer = 0;
             timeToRoomSpawn = UnityEngine.Random.Range(roomSpawnIntervalMin, roomSpawnIntervalMax);
 
         }
         checkSentMessage();
 
-
-
-
     }
 
     public void AcceptEvent()
     {
+        if (currentEvent.EventType == EventType.Good)
+            audioManager.play("GoodEvent");
+        else
+            audioManager.play("Explosion");
+
         resourceManager.RemoveResources(currentEvent.Cost);
         resourceManager.AddResources(currentEvent.Reward);
         dialogueManager.EndEvent();
@@ -162,6 +179,7 @@ public class GameController : MonoBehaviour
         roomSpawnIntervalMax = 60;
         timeToRoomSpawn = UnityEngine.Random.Range(roomSpawnIntervalMin, roomSpawnIntervalMax);
     }
+    // change event occurance, room spawn game length
     public void setMedium()
     {
         GameLength = 12 * 60;
@@ -175,6 +193,7 @@ public class GameController : MonoBehaviour
         timeToRoomSpawn = UnityEngine.Random.Range(roomSpawnIntervalMin, roomSpawnIntervalMax);
     }
 
+    // change event occurance, room spawn game length
     public void setHard()
     {
         GameLength = 15 * 60;

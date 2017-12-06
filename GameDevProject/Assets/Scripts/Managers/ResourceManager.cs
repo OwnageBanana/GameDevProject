@@ -40,7 +40,7 @@ public class ResourceManager : MonoBehaviour
             Destroy(gameObject);
 
         //baseline food level?
-        resources.Food = 10;
+        resources.Food = 50;
         resources.Happiness = 100;
         resources.Energy = 100;
         resources.ShipHp = 100;
@@ -64,7 +64,11 @@ public class ResourceManager : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// adding resources provided to player resources
+    /// </summary>
+    /// <param name="toAdd">resources to add to player's </param>
+    /// <returns>new player resource</returns>
     public Resources AddResources(Resources toAdd)
     {
         addFood(toAdd.Food);
@@ -73,9 +77,107 @@ public class ResourceManager : MonoBehaviour
         addShipHP(toAdd.ShipHp);
         addKarma(toAdd.Karma);
 
+        AdjustHappiness();
+
         HUD.RefreshHUD();
         return resources;
 
+    }
+
+    /// <summary>
+    /// changes the players resources from provded resources object
+    /// </summary>
+    /// <param name="toChange">values to change the resources by </param>
+    /// <returns>players new resources object</returns>
+    public Resources ChangeResources(Resources toChange)
+    {
+        //changing food
+        if (toChange.Food > 0)
+            addFood(toChange.Food);
+        else
+            removeFood(toChange.Food * -1);
+        //changing happiness
+        if (toChange.Happiness > 0)
+            addHappiness(toChange.Happiness);
+        else
+            removeHappiness(toChange.Happiness * -1);
+
+        //changing energy
+        if (toChange.Energy > 0)
+            addEnergy(toChange.Energy);
+        else
+            removeEnergy(toChange.Energy * -1);
+
+        //changing ship HP
+        if (toChange.ShipHp > 0)
+            addShipHP(toChange.ShipHp);
+        else
+            removeShipHP(toChange.ShipHp * -1);
+
+        //channging player karma
+        if (toChange.Food > 0)
+            addKarma(toChange.Karma);
+        else
+            removeKarma(toChange.Karma * -1);
+
+        AdjustHappiness();
+
+        HUD.RefreshHUD();
+        return resources;
+
+    }
+
+
+
+
+
+    public bool CheckLost()
+    {
+        bool lost = false;
+
+        lost = resources.Food == 0;
+        if (!lost)
+            lost = resources.ShipHp == 0;
+        if (!lost)
+            lost = resources.ShipHp == 0;
+
+        return lost;
+    }
+
+    public void AdjustHappiness()
+    {
+        int toChange = 0;
+        if (resources.Food > 50)
+            toChange += 1;
+        if (resources.Food <= 50)
+            toChange -= 1;
+        if (resources.Food <= 25)
+            toChange -= 1;
+        if (resources.Food <= 0)
+            toChange -= 1;
+
+        if (resources.Energy <= 50)
+            toChange -= 1;
+        if (resources.Energy <= 25)
+            toChange -= 1;
+        if (resources.Energy <= 0)
+            toChange -= 1;
+
+
+        if (resources.Food > 50)
+            toChange -= 1;
+        if (resources.Garbage <= 50)
+            toChange += 1;
+        if (resources.Energy <= 25)
+            toChange += 1;
+        if (resources.Energy <= 0)
+            toChange += 1;
+
+
+        if (toChange > 0)
+            addHappiness(toChange);
+        else
+            removeHappiness(toChange);
     }
 
 
@@ -181,6 +283,4 @@ public class ResourceManager : MonoBehaviour
             resources.ShipHp += amm;
         HUD.RefreshHUD();
     }
-
-
 }
