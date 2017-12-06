@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//Author: Adam Mills
+
+using UnityEngine;
 using UnityEngine.AI;
 
 // Walk to a random position and repeat

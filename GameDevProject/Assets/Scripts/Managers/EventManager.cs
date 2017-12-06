@@ -1,4 +1,5 @@
-﻿
+﻿//Author: Adam Mills
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,26 +51,36 @@ public class EventManager : MonoBehaviour {
         Event choice = new Event();
 
         //based on some of the player stats we can decide the type of event that they get.
-
+        List<Event> selections = new List<Event>();
         //maybe, if they are damaged, some kind vessel will offer aid, some evil alien will try to take advantage of that,etc.,
         if (resources.ShipHp < 50)
-            ;
+        {
+            Events.FindAll(x => x.Reward.ShipHp > 0);
+        }
         //happy Crew? they do some thing smart
         if (resources.Happiness > 75)
-            ;
-        //sad crew, builds rec room
-        else if (resources.Happiness > 50)
-            ;
+        {
+            selections.AddRange(Events.FindAll(x => x.EventType == EventType.Neutral));
+        }
+        //sad crew, do something that makes them happy, maybe not great for you
+        if (resources.Happiness > 50)
+        {
+            selections.AddRange(Events.FindAll(x => x.Reward.Happiness > 0));
+        }
         //mad crew, damages ship
-        else if (resources.Happiness > 25)
-            ;
-        //positive Karma? good stuff more likely to happen
-        if (resources.Karma > 0)
-            ;
+        if (resources.Happiness > 25)
+        {
+            selections.AddRange(Events.FindAll(x => x.Reward.Happiness > 0));
+        }//positive Karma? good stuff more likely to happen
+        if (resources.Karma > 0) {
+            selections.AddRange(Events.FindAll(x => x.EventType == EventType.Good));
+        }
         //negative Karma? bad stuff more likely to happen
-        if (resources.Karma < 0)
-            ;
+        else if (resources.Karma < 0)
+            selections.AddRange(Events.FindAll(x => x.EventType == EventType.Bad));
 
+        //by vertue of the list not being distinct, the overlap of repeated events means that they are more likely to occur :) simple enough
+        choice = selections[UnityEngine.Random.Range(0, selections.Count - 1)];
 
         return choice;
     }

@@ -1,8 +1,11 @@
-﻿using System;
+﻿//Author: Adam Mills
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -17,12 +20,26 @@ public class GameController : MonoBehaviour
     public Camera MainCamera;
     public LayerMask clickablesLayer;
 
+    public Slider progressBar;
+    public float GameLength;
+    public float progress;
+
     public static GameController instance;
 
     public Dialogue startDialogue;
 
-    public int eventOccuranceMin;
-    public int eventOccuranceMax;
+    public int eventIntervalMin;
+    public int eventIntervalMax;
+    private float timeToEvent;
+    private float eventTimer;
+
+
+    public int roomSpawnIntervalMin;
+    public int roomSpawnIntervalMax;
+    public float timeToRoomSpawn;
+    private float roomTimer;
+
+    public float resourceTick;
 
     private Event currentEvent;
 
@@ -48,44 +65,78 @@ public class GameController : MonoBehaviour
     {
         shipManager.initalizeRooms();
         shipManager.InitalizeShip();
+        setEasy();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //updating progress bar, checking if player won game
+        progress += Time.deltaTime;
+        progressBar.value = progress / GameLength;
 
-        if (Input.GetMouseButtonDown(0))
+
+        //TODO:Player has won, end the game
+        if (progress / GameLength >= 1)
+            ;
+
+        // if left click with mouse and the menu isn't already open
+        if (Input.GetMouseButtonDown(0) && !shipManager.roomManager.Panel.activeSelf)
         {
-            Debug.Log("Raycast on click");
             RaycastHit rayHit;
             bool hit = Physics.Raycast(MainCamera.ScreenPointToRay(Input.mousePosition), out rayHit, clickablesLayer);
             if (hit)
             {
                 RoomAttribute room = rayHit.collider.GetComponent<RoomAttribute>();
-                Debug.Log("Displaying Menu");
-                shipManager.roomManager.DisplayMenu(room);
+                if (room != null)
+                    shipManager.roomManager.DisplayMenu(room);
 
             }
-            shipManager.AddRoom("Gym");
 
         }
 
+        resourceTick += Time.deltaTime;
+
+        if (resourceTick >= 30)
+            resourceManager.AddResources(shipManager.GetResourceDeltas());
+
+        eventTimer += Time.deltaTime;
+
+        if (eventTimer >= timeToEvent)
+        {
+            currentEvent = eventManager.PickEvent(resourceManager.resources);
+            eventTimer = 0;
+            dialogueManager.StartEvent(currentEvent);
+
+            timeToEvent = UnityEngine.Random.Range(eventIntervalMin, eventIntervalMax);
+        }
+
+        roomTimer += Time.deltaTime;
+        if (roomTimer >= timeToRoomSpawn)
+        {
+            shipManager.AddRandomRoom();
+            timeToRoomSpawn = UnityEngine.Random.Range(roomSpawnIntervalMin, roomSpawnIntervalMax);
+
+        }
         checkSentMessage();
+
+
+
 
     }
 
     public void AcceptEvent()
     {
-        Debug.Log("Event was accepted");
-
+        resourceManager.RemoveResources(currentEvent.Cost);
+        resourceManager.AddResources(currentEvent.Reward);
         dialogueManager.EndEvent();
+        currentEvent = null;
     }
 
     public void DenyEvent()
     {
-        Debug.Log("Event Was Denied");
         dialogueManager.EndEvent();
-
+        currentEvent = null;
     }
 
 
@@ -95,9 +146,44 @@ public class GameController : MonoBehaviour
         {
             messageSent = true;
             dialogueManager.StartDailogue(startDialogue);
-            Event e = new Event { Description = "This is a test to see how events work" };
-            dialogueManager.StartEvent(e);
         }
+    }
+
+    // change event occurance, room spawn game length
+    public void setEasy()
+    {
+        GameLength = 8 * 60;
+        eventIntervalMin = 30;
+        eventIntervalMax = 40;
+        timeToEvent = UnityEngine.Random.Range(eventIntervalMin, eventIntervalMax);
+
+        roomSpawnIntervalMin = 30;
+        roomSpawnIntervalMax = 60;
+        timeToRoomSpawn = UnityEngine.Random.Range(roomSpawnIntervalMin, roomSpawnIntervalMax);
+    }
+    public void setMedium()
+    {
+        GameLength = 12 * 60;
+
+        eventIntervalMin = 30;
+        eventIntervalMax = 40;
+        timeToEvent = UnityEngine.Random.Range(eventIntervalMin, eventIntervalMax);
+
+        roomSpawnIntervalMin = 30;
+        roomSpawnIntervalMax = 40;
+        timeToRoomSpawn = UnityEngine.Random.Range(roomSpawnIntervalMin, roomSpawnIntervalMax);
+    }
+
+    public void setHard()
+    {
+        GameLength = 15 * 60;
+        eventIntervalMin = 30;
+        eventIntervalMax = 40;
+        timeToEvent = UnityEngine.Random.Range(eventIntervalMin, eventIntervalMax);
+
+        roomSpawnIntervalMin = 20;
+        roomSpawnIntervalMax = 40;
+        timeToRoomSpawn = UnityEngine.Random.Range(roomSpawnIntervalMin, roomSpawnIntervalMax);
     }
 
 }

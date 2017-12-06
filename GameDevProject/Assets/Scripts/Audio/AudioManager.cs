@@ -1,4 +1,6 @@
-﻿using UnityEngine.Audio;
+﻿//Author: Adam Mills
+
+using UnityEngine.Audio;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
