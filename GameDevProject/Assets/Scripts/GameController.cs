@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -76,9 +77,9 @@ public class GameController : MonoBehaviour
         progressBar.value = progress / GameLength;
 
 
-        //TODO:Player has won, end the game
+        //Player has won, end the game
         if (progress / GameLength >= 1)
-            ;
+            SceneManager.LoadScene("Victory");
 
         // if left click with mouse and the menu isn't already open
         if (Input.GetMouseButtonDown(0) && !shipManager.roomManager.Panel.activeSelf)

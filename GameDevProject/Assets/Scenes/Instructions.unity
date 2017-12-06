@@ -330,7 +330,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1363205127}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21, y: -12.467285, z: 0}
+  m_LocalPosition: {x: -64.09999, y: 0.0000076293945, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1363460045}
@@ -338,8 +338,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21, y: -12.467285}
-  m_SizeDelta: {x: 315.4, y: 115.47}
+  m_AnchoredPosition: {x: -64.1, y: 0.0000076294}
+  m_SizeDelta: {x: 315.4, y: 177.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1363205129
 MonoBehaviour:
@@ -373,10 +373,16 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'PLACEHOLDER INSTRUCTIONS
+  m_Text: 'OBJECTIVE: Survive long enough to reach the new world
 
 
-    RULES AND SUCH GO HERE'
+    Use WASD, arrow keys, or mouse to move the camera
+
+
+    Click on a room to see extra details and options
+
+
+    Mouse Wheel to zoom in and out'
 --- !u!222 &1363205130
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -465,7 +471,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1363460041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 237.5, y: 266.5, z: 0}
+  m_LocalPosition: {x: 478, y: 269.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1527600054}
@@ -611,7 +617,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Colonization Protocol Instructions
+  m_Text: Instructions
 --- !u!222 &1527600056
 CanvasRenderer:
   m_ObjectHideFlags: 0
