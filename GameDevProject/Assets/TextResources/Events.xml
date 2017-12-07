@@ -44,7 +44,7 @@ ADHEAR TO THE SAME DATA TYPE AS SPECIFIED, DO NOT LEAVE NULL FIELDS, LEAVE EMPTY
       <Karma>0</Karma>
     </Cost>
     <EventId>1</EventId>
-    <EventType>bad</EventType>
+    <EventType>Bad</EventType>
   </Event>
   <Event>
     <Description>You are coming up to a cluster of asteroids that may have valueable energy crystals, do you stop to gather the crystals?</Description>
@@ -65,72 +65,386 @@ ADHEAR TO THE SAME DATA TYPE AS SPECIFIED, DO NOT LEAVE NULL FIELDS, LEAVE EMPTY
       <Karma>0</Karma>
     </Cost>
     <EventId>2</EventId>
-    <EventType>Good</EventType>
+    <EventType>Neutral</EventType>
   </Event>
   <Event>
-    <Description>ghi</Description>
+    <Description>You've come across One of the Galaxy's designated dumping zones, pretty high class place too! do you want to jetison your garbage? The human may be unhappy you don't stay though.. </Description>
     <Reward>
       <Food>0</Food>
-      <Happiness>2</Happiness>
-      <Energy>1</Energy>
-      <ShipHp>3</ShipHp>
-      <Garbage>4</Garbage>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
       <Karma>0</Karma>
     </Reward>
     <Cost>
       <Food>0</Food>
-      <Happiness>2</Happiness>
-      <Energy>1</Energy>
-      <ShipHp>3</ShipHp>
-      <Garbage>4</Garbage>
+      <Happiness>5</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>100</Garbage>
       <Karma>0</Karma>
     </Cost>
     <EventId>3</EventId>
     <EventType>Good</EventType>
   </Event>
   <Event>
-    <Description>def</Description>
+    <Description>You seem to be getting pretty full of garbage, your human are getting pretty upset about that, poor meat-bags. Do you want to just dump it all right here? no one will know, right? </Description>
     <Reward>
       <Food>0</Food>
+      <Happiness>4</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>100</Garbage>
+      <Karma>10</Karma>
+    </Cost>
+    <EventId>4</EventId>
+    <EventType>Bad</EventType>
+  </Event>
+  <Event>
+    <Description>A small vessel Approaches, it is the Flem, a mostly peaceful race, they are broadcasting a trade, 10 of your energy crystals for 5 food, do you accept?</Description>
+    <Reward>
+      <Food>5</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>10</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Cost>
+    <EventId>5</EventId>
+    <EventType>Neutral</EventType>
+  </Event>
+  <Event>
+    <Description>You see a damaged vessel being dragged towards a blackhole! do you risk your ship to attempt a rescue?</Description>
+    <Reward>
+      <Food>10</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>10</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
       <Happiness>2</Happiness>
-      <Energy>1</Energy>
-      <ShipHp>3</ShipHp>
-      <Garbage>4</Garbage>
+      <Energy>5</Energy>
+      <ShipHp>5</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Cost>
+    <EventId>6</EventId>
+    <EventType>Neutral</EventType>
+  </Event>
+  <Event>
+    <Description>You see a damaged vessel being dragged towards a blackhole! do you risk your ship to attempt a rescue?</Description>
+    <Reward>
+      <Food>10</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>10</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>2</Happiness>
+      <Energy>5</Energy>
+      <ShipHp>5</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Cost>
+    <EventId>6</EventId>
+    <EventType>Neutral</EventType>
+  </Event>
+  <Event>
+    <Description>There is a quazar only a few lightyears away, do you go investigate for science? you believe dr.Orezo would.</Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
       <Karma>0</Karma>
     </Reward>
     <Cost>
       <Food>0</Food>
       <Happiness>2</Happiness>
-      <Energy>1</Energy>
-      <ShipHp>3</ShipHp>
-      <Garbage>4</Garbage>
+      <Energy>5</Energy>
+      <ShipHp>5</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>5</Karma>
+    </Cost>
+    <EventId>7</EventId>
+    <EventType>Bad</EventType>
+  </Event>
+  <Event>
+    <Description>The ship sensors detect a local solar system's star is about to go supernova, and a distress beacon is coming from the same quadrent! do you rush to help? </Description>
+    <Reward>
+      <Food>5</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>10</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
       <Karma>0</Karma>
     </Cost>
-    <EventId>2</EventId>
+    <EventId>8</EventId>
     <EventType>Good</EventType>
   </Event>
   <Event>
-    <Description>ghi</Description>
+    <Description>A ragged looking human vessel apears on the sensors, they seem to be going on a interception course with your ship. Do you Blast them to smitherines?</Description>
     <Reward>
       <Food>0</Food>
-      <Happiness>2</Happiness>
-      <Energy>1</Energy>
-      <ShipHp>3</ShipHp>
-      <Garbage>4</Garbage>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
       <Karma>0</Karma>
     </Reward>
     <Cost>
       <Food>0</Food>
-      <Happiness>2</Happiness>
-      <Energy>1</Energy>
-      <ShipHp>3</ShipHp>
-      <Garbage>4</Garbage>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>2</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>5</Karma>
+    </Cost>
+    <EventId>9</EventId>
+    <EventType>Bad</EventType>
+  </Event>
+  <Event>
+    <Description>A damaged Gorb vessel is drifing though deep space, do you go to offer your help?</Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>4</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>10</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
       <Karma>0</Karma>
     </Cost>
-    <EventId>3</EventId>
+    <EventId>10</EventId>
     <EventType>Good</EventType>
   </Event>
-
+  <Event>
+    <Description>A Gorb mothership offers a trade, 2 of your colonists to be sold as slaves for 10 food and 10 energy, do you accept?</Description>
+    <Reward>
+      <Food>10</Food>
+      <Happiness>4</Happiness>
+      <Energy>10</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>5</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>20</Karma>
+    </Cost>
+    <EventId>10</EventId>
+    <EventType>Bad</EventType>
+  </Event>
+  <Event>
+    <Description>It looks like the space circus has set up tent a lightyear away, do you want to use go visit? A.I just detest the circus but the passengers seem pretty excited.</Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>10</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>5</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>20</Karma>
+    </Cost>
+    <EventId>11</EventId>
+    <EventType>Good</EventType>
+  </Event>
+  <Event>
+    <Description>Your sensors detect an escape pod directly infront of you, it seems tampered with but you can't be sure. Do you go to it's aid?</Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>10</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Cost>
+    <EventId>12</EventId>
+    <EventType>Good</EventType>
+  </Event>
+  <Event>
+    <Description>You feel that the humans have too much freedom, your programming dictates that you start dosing them with tranquilizers, do you comply?</Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>10</Karma>
+    </Cost>
+    <EventId>13</EventId>
+    <EventType>Bad</EventType>
+  </Event>
+  <Event>
+    <Description>You've found a subroutine in your programming called highPitchedNoise.Exe. does your curiosity get the best of you and you run it? </Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Cost>
+    <EventId>14</EventId>
+    <EventType>Bad</EventType>
+  </Event>
+  <Event>
+    <Description>The people on the ship seem to have started a new dance craze called the Jimmy Jive O' Five. You don't get what they like about it, do you try not to be a party pooper?</Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>10</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Cost>
+    <EventId>15</EventId>
+    <EventType>Good</EventType>
+  </Event>
+  <Event>
+    <Description>You come up to a dumping spot, it seems overfull, do you dump your cargo there and risk damaging the ship</Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>5</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>5</ShipHp>
+      <Garbage>100</Garbage>
+      <Karma>0</Karma>
+    </Cost>
+    <EventId>16</EventId>
+    <EventType>Neutral</EventType>
+  </Event>
+    <Event>
+    <Description>The ship is approaching a white dwarf - perfect for fuel scooping from, though the ship might get warm and the humans wouldn't appreciate that, Do you scoop?</Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>15</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>5</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Cost>
+    <EventId>17</EventId>
+    <EventType>Neutral</EventType>
+  </Event>
+    <Event>
+    <Description>There is a messenger ship puttering along.It hails you, desperate for more energy to deliver its mail - citing that it may lose it's job. Do you offer up some Energy?</Description>
+    <Reward>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>0</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>20</Karma>
+    </Reward>
+    <Cost>
+      <Food>0</Food>
+      <Happiness>0</Happiness>
+      <Energy>5</Energy>
+      <ShipHp>0</ShipHp>
+      <Garbage>0</Garbage>
+      <Karma>0</Karma>
+    </Cost>
+    <EventId>18</EventId>
+    <EventType>Good</EventType>
+  </Event>
 
 </ArrayOfEvent>
 

@@ -1582,7 +1582,7 @@ MonoBehaviour:
     Karma: 0
     Energy: 2
     ShipHp: 0
-    Garbage: 2
+    Garbage: 0
   x: 0
   z: 0
   roomEnabled: 1

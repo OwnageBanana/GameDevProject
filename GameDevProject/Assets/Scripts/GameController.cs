@@ -49,18 +49,18 @@ public class GameController : MonoBehaviour
 
 
     //called when game object is created, before awake, this is pretty important.
-    private void Awake()
-    {
-
-        if (instance == null)
-            instance = this;
-        else
-        {
-            DestroyObject(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
-
-    }
+    //private void Awake()
+    //{
+    //
+    //    if (instance == null)
+    //        instance = this;
+    //    else
+    //    {
+    //        DestroyObject(gameObject);
+    //    }
+    //    DontDestroyOnLoad(gameObject);
+    //
+    //}
     // Use this for initialization
     void Start()
     {
@@ -82,7 +82,16 @@ public class GameController : MonoBehaviour
             SceneManager.LoadScene("Victory");
 
 
-
+        if (resourceManager.resources.Happiness > 20)
+        {
+            audioManager.play("NormalSounds");
+            audioManager.stop("AngrySounds");
+        }
+        else
+        {
+            audioManager.stop("NormalSounds");
+            audioManager.play("AngrySounds");
+        }
 
         // if left click with mouse and the menu isn't already open
         if (Input.GetMouseButtonDown(0) && !shipManager.roomManager.Panel.activeSelf)
@@ -98,6 +107,7 @@ public class GameController : MonoBehaviour
             }
 
         }
+
 
         //resource timer loop
         resourceTick += Time.deltaTime;
@@ -142,11 +152,13 @@ public class GameController : MonoBehaviour
     {
         if (currentEvent.EventType == EventType.Good)
             audioManager.play("GoodEvent");
-        else
-            audioManager.play("Explosion");
+        else if (currentEvent.EventType == EventType.Bad)
+            audioManager.play("BadEvent");
+        if (currentEvent.Description.Contains("HighPitchedNoise"))
+            audioManager.play("Noise");
 
-        resourceManager.RemoveResources(currentEvent.Cost);
         resourceManager.AddResources(currentEvent.Reward);
+        resourceManager.RemoveResources(currentEvent.Cost);
         dialogueManager.EndEvent();
         currentEvent = null;
     }
@@ -171,8 +183,8 @@ public class GameController : MonoBehaviour
     public void setEasy()
     {
         GameLength = 8 * 60;
-        eventIntervalMin = 30;
-        eventIntervalMax = 40;
+        eventIntervalMin = 20;
+        eventIntervalMax = 30;
         timeToEvent = UnityEngine.Random.Range(eventIntervalMin, eventIntervalMax);
 
         roomSpawnIntervalMin = 30;
@@ -184,8 +196,8 @@ public class GameController : MonoBehaviour
     {
         GameLength = 12 * 60;
 
-        eventIntervalMin = 30;
-        eventIntervalMax = 40;
+        eventIntervalMin = 10;
+        eventIntervalMax = 20;
         timeToEvent = UnityEngine.Random.Range(eventIntervalMin, eventIntervalMax);
 
         roomSpawnIntervalMin = 30;
@@ -197,8 +209,8 @@ public class GameController : MonoBehaviour
     public void setHard()
     {
         GameLength = 15 * 60;
-        eventIntervalMin = 30;
-        eventIntervalMax = 40;
+        eventIntervalMin = 10;
+        eventIntervalMax = 10;
         timeToEvent = UnityEngine.Random.Range(eventIntervalMin, eventIntervalMax);
 
         roomSpawnIntervalMin = 20;

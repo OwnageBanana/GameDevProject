@@ -2932,39 +2932,75 @@ MonoBehaviour:
   sounds:
   - name: bgSound1
     clip: {fileID: 8300000, guid: f9c4efd335c7cad48bfabe42dfcff826, type: 3}
-    volume: 0.5
+    volume: 0.1
     pitch: 1.5
     loop: 1
     source: {fileID: 0}
   - name: bgSound3
     clip: {fileID: 8300000, guid: 4b1d09237cef8214b9aabd1d5b597429, type: 3}
-    volume: 0.5
+    volume: 0.1
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: bgSound4
     clip: {fileID: 8300000, guid: 9872ecfc9ba26a645bad088a2f90ffdd, type: 3}
-    volume: 0.5
+    volume: 0.1
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: bgSound5
     clip: {fileID: 8300000, guid: 503b241f0da6a844ea6ab359a1196cfc, type: 3}
-    volume: 0.5
+    volume: 0.1
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: bgSound2
     clip: {fileID: 8300000, guid: 4c26e939b9d130d4aa0d9fb7bb2e035c, type: 3}
-    volume: 0.5
+    volume: 0.1
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: MessageSound
     clip: {fileID: 8300000, guid: 6d9768c245b9fe447a194fcb96062969, type: 3}
-    volume: 0.5
+    volume: 0.3
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - name: GoodEvent
+    clip: {fileID: 8300000, guid: 3ec43ae4c2be5cc4c9241155689d6249, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: AngrySounds
+    clip: {fileID: 8300000, guid: 7a291325d107a4d43a758d92da04dd65, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: NormalSounds
+    clip: {fileID: 8300000, guid: ef7b28060f3329c4cb7ff5deaed820ee, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 6020c3dffff673c42a46eb115c456ee1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Noise
+    clip: {fileID: 8300000, guid: f3f1486f79d36264dadcf764238c875d, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BadEvent
+    clip: {fileID: 8300000, guid: bdfd6fc3e377bf74fa475ed32091c629, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
 --- !u!1 &1054045306
 GameObject:
@@ -3246,7 +3282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1093925047
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3371,8 +3407,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'This is test dialogue to see how the text wraps in the text box. the length
-    of this text is required to test out the minimums and maximums of the box.
+  m_Text: 'You''ve come across One of the Galaxy''s designated dumping zones, pretty
+    high class place too! do you want to jetison your garbage? The human may be unhappy
+    you don''t stay though..
 
 '
 --- !u!222 &1095757588

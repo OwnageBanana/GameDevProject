@@ -57,6 +57,7 @@ public class ResourceManager : MonoBehaviour
         removeEnergy(toRemove.Energy);
         removeShipHP(toRemove.ShipHp);
         removeKarma(toRemove.Karma);
+        removeGarbage(toRemove.Garbage);
 
         HUD.RefreshHUD();
         return resources;
@@ -76,6 +77,7 @@ public class ResourceManager : MonoBehaviour
         addEnergy(toAdd.Energy);
         addShipHP(toAdd.ShipHp);
         addKarma(toAdd.Karma);
+        addGarbage(toAdd.Garbage);
 
         AdjustHappiness();
 
@@ -115,10 +117,16 @@ public class ResourceManager : MonoBehaviour
             removeShipHP(toChange.ShipHp * -1);
 
         //channging player karma
-        if (toChange.Food > 0)
+        if (toChange.Karma > 0)
             addKarma(toChange.Karma);
         else
             removeKarma(toChange.Karma * -1);
+
+        //channging player garbage
+        if (toChange.Garbage > 0)
+            addGarbage(toChange.Garbage);
+        else
+            removeGarbage(toChange.Garbage * -1);
 
         AdjustHappiness();
 
@@ -146,7 +154,14 @@ public class ResourceManager : MonoBehaviour
 
     public void AdjustHappiness()
     {
+
+
         int toChange = 0;
+
+        var ship = FindObjectOfType<ShipManager>();
+        var disabled = ship.GetDisabledRoomCount();
+        toChange -= disabled;
+
         if (resources.Food > 50)
             toChange += 1;
         if (resources.Food <= 50)
@@ -226,7 +241,7 @@ public class ResourceManager : MonoBehaviour
     //removes energy. Doesnt allow values below zero
     public void removeEnergy(int amm)
     {
-        if (amm > resources.Food)
+        if (amm > resources.Energy)
             resources.Energy = 0;
         else
             resources.Energy -= amm;
@@ -236,16 +251,19 @@ public class ResourceManager : MonoBehaviour
     //adds energy. doesnt allow values above cap (default 100)
     public void addEnergy(int amm)
     {
-        if (amm + resources.Happiness > EnergyCap)
-            resources.Happiness = EnergyCap;
+        if (amm + resources.Energy > EnergyCap)
+            resources.Energy = EnergyCap;
         else
-            resources.Happiness += amm;
+            resources.Energy += amm;
         HUD.RefreshHUD();
     }
 
     //removes Ship Hp. Doesnt allow values below zero
     public void removeShipHP(int amm)
     {
+        if (amm !=0)
+            FindObjectOfType<AudioManager>().play("Explosion");
+
         if (amm > resources.ShipHp)
             resources.ShipHp = 0;
         else
@@ -280,7 +298,28 @@ public class ResourceManager : MonoBehaviour
         if (amm + resources.Karma > KarmaCap)
             resources.Karma = KarmaCap;
         else
-            resources.ShipHp += amm;
+            resources.Karma += amm;
+        HUD.RefreshHUD();
+    }
+
+    //removes Ship Hp. Doesnt allow values below zero
+    public void removeGarbage(int amm)
+    {
+
+        if (amm > resources.Garbage)
+            resources.Garbage = 0;
+        else
+            resources.Garbage -= amm;
+        HUD.RefreshHUD();
+    }
+
+    //adds Ship Hp. Doesnt allow values above Hp cap
+    public void addGarbage(int amm)
+    {
+        if (amm + resources.Garbage > GarbageCap)
+            resources.Garbage = GarbageCap;
+        else
+            resources.Garbage += amm;
         HUD.RefreshHUD();
     }
 }

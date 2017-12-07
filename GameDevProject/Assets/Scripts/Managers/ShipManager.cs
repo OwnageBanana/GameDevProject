@@ -78,14 +78,33 @@ public class ShipManager : MonoBehaviour
             {
                 if (rooms[j, i] != null)
                 {
-                    if (rooms[j, i].GetComponent<RoomAttribute>().roomEnabled)
+                    var r = rooms[j, i].GetComponent<RoomAttribute>();
+                    if (r.roomEnabled && r.Room == "Engine")
                         count++;
                 }
             }
         }
         return count;
     }
+    public int GetDisabledRoomCount()
+    {
+        int count = 0;
+        for (int i = 0; i < MaxShipSize; i++)
+        {
+            for (int j = 0; j < MaxShipSize; j++)
+            {
+                if (rooms[j, i] != null)
+                {
+                    var r = rooms[j, i].GetComponent<RoomAttribute>();
+                    if (!r.roomEnabled)
+                        count++;
+                }
+            }
+        }
+        return count;
 
+
+    }
 
     /// <summary>
     /// innitalizes a room at a position provided

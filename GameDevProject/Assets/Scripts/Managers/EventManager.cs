@@ -12,7 +12,7 @@ using System.Xml.Linq;
 public class EventManager : MonoBehaviour {
 
     List<Event> Events = new List<Event>();
-
+    public TextAsset xmlEvents;
     // Use this for initialization, called on script enabling
     void Start()
     {
@@ -22,7 +22,8 @@ public class EventManager : MonoBehaviour {
             //initialize serializer to use List<Event>
             var serializer = new XmlSerializer(typeof(List<Event>));
             //get the plain text from Events.xml file
-            string xml = File.ReadAllText("Assets/TextResources/Events.xml");
+
+            string xml = xmlEvents.text;// File.ReadAllText("Assets/TextResources/Events.xml");
             //parse the xml to remove white space and special characters
             xml = XDocument.Parse(xml).ToString(SaveOptions.DisableFormatting);
 
