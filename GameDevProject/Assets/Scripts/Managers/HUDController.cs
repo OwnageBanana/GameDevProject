@@ -8,6 +8,7 @@ public class HUDController : MonoBehaviour {
     public static HUDController instance = null;
     Resources resources;
 
+    //ui elements that the HUD controller manages
     public Text food = null;
     public Text happiness = null;
     public Text energy = null;
@@ -36,6 +37,7 @@ public class HUDController : MonoBehaviour {
 
     public void RefreshHUD()
     {
+        //setting the resources in the HUD
         food.text = "" + resources.Food;
         happiness.text = "" + resources.Happiness;
         energy.text = "" + resources.Energy;

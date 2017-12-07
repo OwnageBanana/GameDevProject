@@ -72,6 +72,7 @@ public class ShipManager : MonoBehaviour
     public int GetEngineCount()
     {
         int count = 0;
+        //counting disabled engines in the array
         for (int i = 0; i < MaxShipSize; i++)
         {
             for (int j = 0; j < MaxShipSize; j++)
@@ -86,9 +87,15 @@ public class ShipManager : MonoBehaviour
         }
         return count;
     }
+
+    /// <summary>
+    /// finds the count of disabled rooms on the ship, used to determine happiness (disabled rooms are a detrement to happiness)
+    /// </summary>
+    /// <returns>integer count of number of disabled rooms</returns>
     public int GetDisabledRoomCount()
     {
         int count = 0;
+        //counting disabled rooms in the array
         for (int i = 0; i < MaxShipSize; i++)
         {
             for (int j = 0; j < MaxShipSize; j++)

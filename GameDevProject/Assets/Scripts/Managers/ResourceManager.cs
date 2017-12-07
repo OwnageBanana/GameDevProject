@@ -152,18 +152,23 @@ public class ResourceManager : MonoBehaviour
         return lost;
     }
 
+    /// <summary>
+    /// adjusts happiness based on current resources and player actions
+    /// </summary>
     public void AdjustHappiness()
     {
 
-
         int toChange = 0;
 
+        //remove 1 happiness for each room disabled
         var ship = FindObjectOfType<ShipManager>();
         var disabled = ship.GetDisabledRoomCount();
         toChange -= disabled;
 
+        //if resources are plentiful add happiness
         if (resources.Food > 50)
             toChange += 1;
+        //if resources are scarce remove happiness
         if (resources.Food <= 50)
             toChange -= 1;
         if (resources.Food <= 25)
@@ -171,6 +176,7 @@ public class ResourceManager : MonoBehaviour
         if (resources.Food <= 0)
             toChange -= 1;
 
+        //if resources are scarce remove happiness
         if (resources.Energy <= 50)
             toChange -= 1;
         if (resources.Energy <= 25)
@@ -178,17 +184,18 @@ public class ResourceManager : MonoBehaviour
         if (resources.Energy <= 0)
             toChange -= 1;
 
-
-        if (resources.Food > 50)
+        // too much garbage, remove happiness
+        if (resources.Garbage > 50)
             toChange -= 1;
+        //other wise add happiness
         if (resources.Garbage <= 50)
             toChange += 1;
-        if (resources.Energy <= 25)
+        if (resources.Garbage <= 25)
             toChange += 1;
-        if (resources.Energy <= 0)
+        if (resources.Garbage <= 0)
             toChange += 1;
 
-
+        // update happiness
         if (toChange > 0)
             addHappiness(toChange);
         else

@@ -11,56 +11,51 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
 
+    //seperate managers that deal with data and helper methods
     public DialogueManager dialogueManager;
     public EventManager eventManager;
     public ResourceManager resourceManager;
     public ShipManager shipManager;
     public AudioManager audioManager;
 
-
+    //main camera and clickable layers to click on rooms
     public Camera MainCamera;
     public LayerMask clickablesLayer;
 
+    //ui element and values to determine when game is won
     public Slider progressBar;
     public float GameLength;
     public float progress;
 
-    public static GameController instance;
-
+    //the start dialog. see text array in the gamecontroller object in unity
     public Dialogue startDialogue;
 
+    //event interval for a random range
     public int eventIntervalMin;
     public int eventIntervalMax;
+    //counter for event timer and event time
     private float timeToEvent;
     private float eventTimer;
 
-
+    //room iterval for a rndom range
     public int roomSpawnIntervalMin;
     public int roomSpawnIntervalMax;
+    //room spawn counter and the holder for the time value
     public float timeToRoomSpawn;
     private float roomTimer;
 
+    //counter for resource accumulation
     public float resourceTick;
 
+    //current event object to hold event when event is triggered
     private Event currentEvent;
 
+    //used for the begining dialogue
     private bool messageSent = false;
 
 
 
-    //called when game object is created, before awake, this is pretty important.
-    //private void Awake()
-    //{
-    //
-    //    if (instance == null)
-    //        instance = this;
-    //    else
-    //    {
-    //        DestroyObject(gameObject);
-    //    }
-    //    DontDestroyOnLoad(gameObject);
-    //
-    //}
+
     // Use this for initialization
     void Start()
     {
@@ -98,16 +93,18 @@ public class GameController : MonoBehaviour
         {
             RaycastHit rayHit;
             bool hit = Physics.Raycast(MainCamera.ScreenPointToRay(Input.mousePosition), out rayHit, clickablesLayer);
+            //if the ray cast hit a room
             if (hit)
             {
                 RoomAttribute room = rayHit.collider.GetComponent<RoomAttribute>();
+                //if the room isn't null
                 if (room != null)
+                    //show menu for the room
                     shipManager.roomManager.DisplayMenu(room);
 
             }
 
         }
-
 
         //resource timer loop
         resourceTick += Time.deltaTime;
@@ -148,21 +145,32 @@ public class GameController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Accepts the current event, adds and subtracts resources and plays noises based on event
+    /// </summary>
     public void AcceptEvent()
     {
+        //playing noises based on event type
         if (currentEvent.EventType == EventType.Good)
             audioManager.play("GoodEvent");
         else if (currentEvent.EventType == EventType.Bad)
             audioManager.play("BadEvent");
+
+        //special event noise
         if (currentEvent.Description.Contains("HighPitchedNoise"))
             audioManager.play("Noise");
 
+        //resource addition from reward
         resourceManager.AddResources(currentEvent.Reward);
+        //resource subtraction from cost
         resourceManager.RemoveResources(currentEvent.Cost);
         dialogueManager.EndEvent();
         currentEvent = null;
     }
 
+    /// <summary>
+    /// player denied the event, don't do anything but end the event and set current event to null
+    /// </summary>
     public void DenyEvent()
     {
         dialogueManager.EndEvent();
@@ -170,6 +178,9 @@ public class GameController : MonoBehaviour
     }
 
 
+    /// <summary>
+    ///used to display the start message
+    /// </summary>
     private void checkSentMessage()
     {
         if (!messageSent)
@@ -182,6 +193,7 @@ public class GameController : MonoBehaviour
     // change event occurance, room spawn game length
     public void setEasy()
     {
+        //setting the game intervals
         GameLength = 8 * 60;
         eventIntervalMin = 20;
         eventIntervalMax = 30;
@@ -194,8 +206,8 @@ public class GameController : MonoBehaviour
     // change event occurance, room spawn game length
     public void setMedium()
     {
+        //setting the game intervals
         GameLength = 12 * 60;
-
         eventIntervalMin = 10;
         eventIntervalMax = 20;
         timeToEvent = UnityEngine.Random.Range(eventIntervalMin, eventIntervalMax);
@@ -208,6 +220,7 @@ public class GameController : MonoBehaviour
     // change event occurance, room spawn game length
     public void setHard()
     {
+        //setting the game intervals
         GameLength = 15 * 60;
         eventIntervalMin = 10;
         eventIntervalMax = 10;
